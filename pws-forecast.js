@@ -30,7 +30,7 @@ module.exports = function(RED) {
         })
         .catch(function (error) {
           node.send(msg);
-      });
+        });
     });
   }
   RED.nodes.registerType("pws-forecast",weatherPWS5DayForecastNode);

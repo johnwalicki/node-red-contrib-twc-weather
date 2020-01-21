@@ -1,16 +1,16 @@
 <script type="text/javascript">
   RED.nodes.registerType('pws-7day-summary',{
-  	category: 'Weather',
-  	color:	"#a2a9b0",
-  	icon: "icons/wi-wu-partlycloudy.png",
-  	inputs:1,
-  	outputs:1,
-  	defaults: {
-  		name: { value:""},
+    category: 'Weather',
+    color:	"#a2a9b0",
+    icon: "icons/wi-wu-partlycloudy.png",
+    inputs:1,
+    outputs:1,
+    defaults: {
+      name: { value:""},
       stationid: { value:""},
       units: { value:"e"},
       apikey: {value:"", type:"pwsapikey",required: true}
-  	},
+    },
     label: function() {
       return this.name||"PWS 7 Day Summary";
     }
@@ -62,17 +62,17 @@ for more information about the <strong>The Weather Company APIs for Personal Wea
 //// PWS 7 Day Hourly
 <script type="text/javascript">
   RED.nodes.registerType('pws-7day-hourly',{
-  	category: 'Weather',
-  	color:	"#a2a9b0",
-  	icon: "icons/wi-wu-partlycloudy.png",
-  	inputs:1,
-  	outputs:1,
-  	defaults: {
-  		name: { value:""},
+    category: 'Weather',
+    color:	"#a2a9b0",
+    icon: "icons/wi-wu-partlycloudy.png",
+    inputs:1,
+    outputs:1,
+    defaults: {
+      name: { value:""},
       stationid: { value:""},
       units: { value:"e"},
       apikey: {value:"", type:"pwsapikey",required: true}
-  	},
+    },
     label: function() {
       return this.name||"PWS 7 Day Hourly";
     }
@@ -124,17 +124,17 @@ for more information about the <strong>The Weather Company APIs for Personal Wea
 //// PWS 1 Day Rapid
 <script type="text/javascript">
   RED.nodes.registerType('pws-1day-all',{
-  	category: 'Weather',
-  	color:	"#a2a9b0",
-  	icon: "icons/wi-wu-partlycloudy.png",
-  	inputs:1,
-  	outputs:1,
-  	defaults: {
-  		name: { value:""},
+    category: 'Weather',
+    color:	"#a2a9b0",
+    icon: "icons/wi-wu-partlycloudy.png",
+    inputs:1,
+    outputs:1,
+    defaults: {
+      name: { value:""},
       stationid: { value:""},
       units: { value:"e"},
       apikey: {value:"", type:"pwsapikey",required: true}
-  	},
+    },
     label: function() {
       return this.name||"PWS 1 Day All";
     }

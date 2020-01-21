@@ -79,13 +79,13 @@ module.exports = function(RED) {
         node.send(msg);
       } else {
         request('https://api.weather.com/v2/pws/history/'+ range + '?stationId='+ WhichStationId +'&format=json&date='+datestr+'&units='+units+'&apiKey='+apiKey)
-        .then(function (response) {
-            msg.payload = JSON.parse(response);
-            node.send(msg);
-        })
-        .catch(function (error) {
-            node.send(msg);
-        });
+          .then(function (response) {
+              msg.payload = JSON.parse(response);
+              node.send(msg);
+          })
+          .catch(function (error) {
+              node.send(msg);
+          });
       }
     });
   }

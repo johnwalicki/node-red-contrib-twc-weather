@@ -1,18 +1,18 @@
 <script type="text/javascript">
   RED.nodes.registerType('pws-forecast',{
-  	category: 'Weather',
-  	color:	"#a2a9b0",
-  	icon: "icons/wi-wu-partlycloudy.png",
-  	inputs:1,
-  	outputs:1,
-  	defaults: {
-  		name: { value:""},
+    category: 'Weather',
+    color:	"#a2a9b0",
+    icon: "icons/wi-wu-partlycloudy.png",
+    inputs:1,
+    outputs:1,
+    defaults: {
+      name: { value:""},
       units: { value:"e"},
       locationtype: {value:"geocode",required: true},
       location: {value:"",required: true},
       lang: {value:"en-US"},
       apikey: {value:"", type:"pwsapikey",required: true}
-  	},
+    },
     label: function() {
       return this.name||"TWC Forecast";
     }

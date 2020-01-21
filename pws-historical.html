@@ -1,18 +1,18 @@
 <script type="text/javascript">
   RED.nodes.registerType('pws-historical',{
-  	category: 'Weather',
-  	color:	"#a2a9b0",
-  	icon: "icons/wi-wu-partlycloudy.png",
-  	inputs:1,
-  	outputs:1,
-  	defaults: {
-  		name: { value:""},
+    category: 'Weather',
+    color:	"#a2a9b0",
+    icon: "icons/wi-wu-partlycloudy.png",
+    inputs:1,
+    outputs:1,
+    defaults: {
+      name: { value:""},
       stationid: { value:""},
       units: { value:"e"},
       date: { value:"" },
       range: { value:"daily",required:true},
       apikey: {value:"", type:"pwsapikey",required: true}
-  	},
+    },
     label: function() {
       return this.name||"PWS Historical";
     }
