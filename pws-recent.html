@@ -1,20 +1,20 @@
 <script type="text/javascript">
   RED.nodes.registerType('pws-7day-summary',{
-    	category: 'Weather',
-    	color:	"#a2a9b0",
-    	icon: "icons/wi-wu-partlycloudy.png",
-    	inputs:1,
-    	outputs:1,
-    	defaults: {
-    		name: { value:""},
-        stationid: { value:""},
-        units: { value:"e"},
-        apikey: {value:"", type:"pwsapikey",required: true}
-    	},
-	label: function() {
-		return this.name||"PWS 7 Day Summary";
-	}
-	});
+  	category: 'Weather',
+  	color:	"#a2a9b0",
+  	icon: "icons/wi-wu-partlycloudy.png",
+  	inputs:1,
+  	outputs:1,
+  	defaults: {
+  		name: { value:""},
+      stationid: { value:""},
+      units: { value:"e"},
+      apikey: {value:"", type:"pwsapikey",required: true}
+  	},
+    label: function() {
+      return this.name||"PWS 7 Day Summary";
+    }
+  });
 </script>
 
 
@@ -23,12 +23,12 @@
     <label for="node-input-apikey"><i class="fa fa-key"></i> API Key</label>
     <input type="text" id="node-input-apikey">
   </div>
-	<div class="form-row">
-		<label for="node-input-stationid"><i class="fa fa-tag"></i> StationID</label>
-		<input type="text" id="node-input-stationid">
-	</div>
   <div class="form-row">
-   <label for="node-input-units"><i class="fa fa-thermometer-half"></i> Unit of Measure</label>
+    <label for="node-input-stationid"><i class="fa fa-tag"></i> StationID</label>
+    <input type="text" id="node-input-stationid">
+  </div>
+  <div class="form-row">
+    <label for="node-input-units"><i class="fa fa-thermometer-half"></i> Unit of Measure</label>
     <select id="node-input-units">
       <option value="e">English units</option>
       <option value="m">Metric units</option>
@@ -42,41 +42,41 @@
 </script>
 
 <script type="text/x-red" data-help-name="pws-7day-summary">
-	<p>Personal Weather Station (PWS) Daily Summary Historical Observations returns the 7 day summary of daily observations</p>
+  <p>Personal Weather Station (PWS) Daily Summary Historical Observations returns the 7 day summary of daily observations</p>
   <p>Query personal weather station data for the previous 7 days returning daily averages and summary data.</p>
   <p>See the <a target="_blank" href="https://docs.google.com/document/d/1eKCnKXI9xnoMGRRzOL1xPCBihNV2rOet08qpE_gArAY">online documentation</a>
 for more information about the <strong>The Weather Company APIs for Personal Weather Stations</strong>.</p>
   <h3>Inputs:</h3>
   <dl class="message-properties">
-      <dt class="optional">StationID <span class="property-type">string</span></dt>
-      <dd>If specified, override edit panel. Station ID as registered by wunderground.com</dd>
+    <dt class="optional">StationID <span class="property-type">string</span></dt>
+    <dd>If specified, override edit panel. Station ID as registered by wunderground.com</dd>
   </dl>
   <h3>Outputs:</h3>
   <h4><strong>msg.payload.summaries</strong></h4>
   <ul>
-  <li>Array of json objects containing data elements</li>
-  <li>Find details on the <a target="_blank" href="https://ibm.co/v2PWS7d">PWS Daily Summary - 7 Day History</a> data elements and definitions.</li>
+    <li>Array of json objects containing data elements</li>
+    <li>Find details on the <a target="_blank" href="https://ibm.co/v2PWS7d">PWS Daily Summary - 7 Day History</a> data elements and definitions.</li>
   </ul>
 </script>
 
 //// PWS 7 Day Hourly
 <script type="text/javascript">
   RED.nodes.registerType('pws-7day-hourly',{
-    	category: 'Weather',
-    	color:	"#a2a9b0",
-    	icon: "icons/wi-wu-partlycloudy.png",
-    	inputs:1,
-    	outputs:1,
-    	defaults: {
-    		name: { value:""},
-        stationid: { value:""},
-        units: { value:"e"},
-        apikey: {value:"", type:"pwsapikey",required: true}
-    	},
-	label: function() {
-		return this.name||"PWS 7 Day Hourly";
-	}
-	});
+  	category: 'Weather',
+  	color:	"#a2a9b0",
+  	icon: "icons/wi-wu-partlycloudy.png",
+  	inputs:1,
+  	outputs:1,
+  	defaults: {
+  		name: { value:""},
+      stationid: { value:""},
+      units: { value:"e"},
+      apikey: {value:"", type:"pwsapikey",required: true}
+  	},
+    label: function() {
+      return this.name||"PWS 7 Day Hourly";
+    }
+  });
 </script>
 
 
@@ -85,12 +85,12 @@ for more information about the <strong>The Weather Company APIs for Personal Wea
     <label for="node-input-apikey"><i class="fa fa-key"></i> API Key</label>
     <input type="text" id="node-input-apikey">
   </div>
-	<div class="form-row">
-		<label for="node-input-stationid"><i class="fa fa-tag"></i> StationID</label>
-		<input type="text" id="node-input-stationid">
-	</div>
   <div class="form-row">
-   <label for="node-input-units"><i class="fa fa-thermometer-half"></i> Unit of Measure</label>
+    <label for="node-input-stationid"><i class="fa fa-tag"></i> StationID</label>
+    <input type="text" id="node-input-stationid">
+  </div>
+  <div class="form-row">
+    <label for="node-input-units"><i class="fa fa-thermometer-half"></i> Unit of Measure</label>
     <select id="node-input-units">
       <option value="e">English units</option>
       <option value="m">Metric units</option>
@@ -104,41 +104,41 @@ for more information about the <strong>The Weather Company APIs for Personal Wea
 </script>
 
 <script type="text/x-red" data-help-name="pws-7day-hourly">
-	<p>Personal Weather Stations (PWS) Hourly Historical Observations returns the hourly records for each days observations report.</p>
+  <p>Personal Weather Stations (PWS) Hourly Historical Observations returns the hourly records for each days observations report.</p>
   <p>Query personal weather station data for the previous 7 days returning hourly data.</p>
   <p>See the <a target="_blank" href="https://docs.google.com/document/d/1eKCnKXI9xnoMGRRzOL1xPCBihNV2rOet08qpE_gArAY">online documentation</a>
 for more information about the <strong>The Weather Company APIs for Personal Weather Stations</strong>.</p>
   <h3>Inputs:</h3>
   <dl class="message-properties">
-      <dt class="optional">StationID <span class="property-type">string</span></dt>
-      <dd>If specified, override edit panel. Station ID as registered by wunderground.com</dd>
+    <dt class="optional">StationID <span class="property-type">string</span></dt>
+    <dd>If specified, override edit panel. Station ID as registered by wunderground.com</dd>
   </dl>
   <h3>Outputs:</h3>
   <h4><strong>msg.payload.summaries</strong></h4>
   <ul>
-  <li>Array of json objects containing data elements</li>
-  <li>Find details on the <a target="_blank" href="https://ibm.co/v2PWS7h">PWS Hourly Summary - 7 Day History</a> data elements and definitions.</li>
+    <li>Array of json objects containing data elements</li>
+    <li>Find details on the <a target="_blank" href="https://ibm.co/v2PWS7h">PWS Hourly Summary - 7 Day History</a> data elements and definitions.</li>
   </ul>
 </script>
 
 //// PWS 1 Day Rapid
 <script type="text/javascript">
   RED.nodes.registerType('pws-1day-all',{
-    	category: 'Weather',
-    	color:	"#a2a9b0",
-    	icon: "icons/wi-wu-partlycloudy.png",
-    	inputs:1,
-    	outputs:1,
-    	defaults: {
-    		name: { value:""},
-        stationid: { value:""},
-        units: { value:"e"},
-        apikey: {value:"", type:"pwsapikey",required: true}
-    	},
-	label: function() {
-		return this.name||"PWS 1 Day All";
-	}
-	});
+  	category: 'Weather',
+  	color:	"#a2a9b0",
+  	icon: "icons/wi-wu-partlycloudy.png",
+  	inputs:1,
+  	outputs:1,
+  	defaults: {
+  		name: { value:""},
+      stationid: { value:""},
+      units: { value:"e"},
+      apikey: {value:"", type:"pwsapikey",required: true}
+  	},
+    label: function() {
+      return this.name||"PWS 1 Day All";
+    }
+  });
 </script>
 
 
@@ -147,12 +147,12 @@ for more information about the <strong>The Weather Company APIs for Personal Wea
     <label for="node-input-apikey"><i class="fa fa-key"></i> API Key</label>
     <input type="text" id="node-input-apikey">
   </div>
-	<div class="form-row">
-		<label for="node-input-stationid"><i class="fa fa-tag"></i> StationID</label>
-		<input type="text" id="node-input-stationid">
-	</div>
   <div class="form-row">
-   <label for="node-input-units"><i class="fa fa-thermometer-half"></i> Unit of Measure</label>
+    <label for="node-input-stationid"><i class="fa fa-tag"></i> StationID</label>
+    <input type="text" id="node-input-stationid">
+  </div>
+  <div class="form-row">
+    <label for="node-input-units"><i class="fa fa-thermometer-half"></i> Unit of Measure</label>
     <select id="node-input-units">
       <option value="e">English units</option>
       <option value="m">Metric units</option>
@@ -166,19 +166,19 @@ for more information about the <strong>The Weather Company APIs for Personal Wea
 </script>
 
 <script type="text/x-red" data-help-name="pws-1day-all">
-	<p>Personal Weather Station (PWS) Rapid Historical Observations returns the daily observations records.</p>
+  <p>Personal Weather Station (PWS) Rapid Historical Observations returns the daily observations records.</p>
   <p>Query personal weather station data for the previous 1 day. Actual frequency of reports ranges and is dependent on how frequently an individual Personal Weather Station (PWS) reports data.</p>
   <p>See the <a target="_blank" href="https://docs.google.com/document/d/1eKCnKXI9xnoMGRRzOL1xPCBihNV2rOet08qpE_gArAY">online documentation</a>
 for more information about the <strong>The Weather Company APIs for Personal Weather Stations</strong>.</p>
   <h3>Inputs:</h3>
   <dl class="message-properties">
-      <dt class="optional">StationID <span class="property-type">string</span></dt>
-      <dd>If specified, override edit panel. Station ID as registered by wunderground.com</dd>
+    <dt class="optional">StationID <span class="property-type">string</span></dt>
+    <dd>If specified, override edit panel. Station ID as registered by wunderground.com</dd>
   </dl>
   <h3>Outputs:</h3>
   <h4><strong>msg.payload.observations</strong></h4>
   <ul>
-  <li>Array of json objects containing data elements</li>
-  <li>Find details on the <a target="_blank" href="https://ibm.co/v21dRH">PWS 1 Day History</a> data elements and definitions.</li>
+    <li>Array of json objects containing data elements</li>
+    <li>Find details on the <a target="_blank" href="https://ibm.co/v21dRH">PWS 1 Day History</a> data elements and definitions.</li>
   </ul>
 </script>

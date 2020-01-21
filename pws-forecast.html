@@ -1,22 +1,22 @@
 <script type="text/javascript">
   RED.nodes.registerType('pws-forecast',{
-    	category: 'Weather',
-    	color:	"#a2a9b0",
-    	icon: "icons/wi-wu-partlycloudy.png",
-    	inputs:1,
-    	outputs:1,
-    	defaults: {
-    		name: { value:""},
-        units: { value:"e"},
-        locationtype: {value:"geocode",required: true},
-        location: {value:"",required: true},
-        lang: {value:"en-US"},
-        apikey: {value:"", type:"pwsapikey",required: true}
-    	},
-	label: function() {
-		return this.name||"TWC Forecast";
-	}
-	});
+  	category: 'Weather',
+  	color:	"#a2a9b0",
+  	icon: "icons/wi-wu-partlycloudy.png",
+  	inputs:1,
+  	outputs:1,
+  	defaults: {
+  		name: { value:""},
+      units: { value:"e"},
+      locationtype: {value:"geocode",required: true},
+      location: {value:"",required: true},
+      lang: {value:"en-US"},
+      apikey: {value:"", type:"pwsapikey",required: true}
+  	},
+    label: function() {
+      return this.name||"TWC Forecast";
+    }
+  });
 </script>
 
 
@@ -26,7 +26,7 @@
     <input type="text" id="node-input-apikey">
   </div>
   <div class="form-row">
-   <label for="node-input-locationtype"><i class="fa fa-globe"></i> Location Type</label>
+    <label for="node-input-locationtype"><i class="fa fa-globe"></i> Location Type</label>
     <select id="node-input-locationtype">
       <option value="geocode">Request by Geocode</option>
       <option value="iataCode">Request by IATA Airport Code</option>
@@ -36,15 +36,15 @@
     </select>
   </div>
   <div class="form-row">
-   <label for="node-input-location"><i class="fa fa-map-marker"></i> Location</label>
-   <input type="text" id="node-input-location" placeholder="40.98,-74.1">
+    <label for="node-input-location"><i class="fa fa-map-marker"></i> Location</label>
+    <input type="text" id="node-input-location" placeholder="40.98,-74.1">
  </div>
  <div class="form-row">
-  <label for="node-input-lang"><i class="fa fa-language"></i> Language</label>
-  <input type="text" id="node-input-lang" placeholder="en-US">
-</div>
+    <label for="node-input-lang"><i class="fa fa-language"></i> Language</label>
+    <input type="text" id="node-input-lang" placeholder="en-US">
+  </div>
   <div class="form-row">
-   <label for="node-input-units"><i class="fa fa-thermometer-half"></i> Unit of Measure</label>
+    <label for="node-input-units"><i class="fa fa-thermometer-half"></i> Unit of Measure</label>
     <select id="node-input-units">
       <option value="e">English units</option>
       <option value="m">Metric units</option>
@@ -58,7 +58,7 @@
 </script>
 
 <script type="text/x-red" data-help-name="pws-forecast">
-	<p>The Daily Forecast API is sourced from the The Weather Company Forecast system. This TWC API returns the 5 Day Daily weather forecast.
+  <p>The Daily Forecast API is sourced from the The Weather Company Forecast system. This TWC API returns the 5 Day Daily weather forecast.
   <p>The TWC daily forecast product can contain multiple days of daily forecasts for each location. Each day of a forecast can contain up to (3) "temporal segments" meaning three separate forecasts. For any given forecast day we offer day, night, and a 24-hour forecast (daily summary). Implementing our forecasts requires your applications to perform basic processing in order to properly ingest the forecast data feeds.
 The data values in this API are correctly populated into Day, Night, or 24-hour temporal segments. These segments are separate objects in the response.
   <p>See the <a target="_blank" href="https://docs.google.com/document/d/1eKCnKXI9xnoMGRRzOL1xPCBihNV2rOet08qpE_gArAY">online documentation</a>
@@ -66,7 +66,7 @@ for more information about the <strong>The Weather Company APIs for Personal Wea
   <h3>Output:</h3>
   <h4><strong>msg.payload</strong></h4>
   <ul>
-  <li>json object containing forecast data elements</li>
-  <li>Find details on the <a target="_blank" href="https://ibm.co/v3FFDP">TWC Daily Forecast (5 Day)</a> data elements and definitions.</li>
+    <li>json object containing forecast data elements</li>
+    <li>Find details on the <a target="_blank" href="https://ibm.co/v3FFDP">TWC Daily Forecast (5 Day)</a> data elements and definitions.</li>
   </ul>
 </script>
