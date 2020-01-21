@@ -16,7 +16,8 @@
     "twc",
     "pws",
     "forecast",
-    "weatherunderground"
+    "weatherunderground",
+    "wunderground"
   ],
   "author": "John Walicki <johnwalicki@gmail.com>",
   "license": "Apache-2.0",
