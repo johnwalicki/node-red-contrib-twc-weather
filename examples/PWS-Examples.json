@@ -1,0 +1,812 @@
+[
+    {
+        "id": "60afae7.f61045",
+        "type": "tab",
+        "label": "PWS Examples",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "73501d9c.791594",
+        "type": "inject",
+        "z": "60afae7.f61045",
+        "name": "Current PWS Observations",
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 170,
+        "y": 100,
+        "wires": [
+            [
+                "33cd7447.122c6c"
+            ]
+        ]
+    },
+    {
+        "id": "937fc0b7.497",
+        "type": "debug",
+        "z": "60afae7.f61045",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 750,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "33cd7447.122c6c",
+        "type": "pws-observations",
+        "z": "60afae7.f61045",
+        "name": "",
+        "stationid": "",
+        "units": "m",
+        "apikey": "ba693fed.4c01f8",
+        "x": 530,
+        "y": 100,
+        "wires": [
+            [
+                "937fc0b7.497"
+            ]
+        ]
+    },
+    {
+        "id": "af1d2f1a.8f7e4",
+        "type": "pws-observations",
+        "z": "60afae7.f61045",
+        "name": "",
+        "stationid": "",
+        "units": "e",
+        "apikey": "ba693fed.4c01f8",
+        "x": 530,
+        "y": 140,
+        "wires": [
+            [
+                "599c27a0.c3109"
+            ]
+        ]
+    },
+    {
+        "id": "599c27a0.c3109",
+        "type": "debug",
+        "z": "60afae7.f61045",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 750,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "f1e7b71e.c678c8",
+        "type": "pws-historical",
+        "z": "60afae7.f61045",
+        "name": "",
+        "stationid": "",
+        "units": "e",
+        "date": "",
+        "range": "daily",
+        "apikey": "ba693fed.4c01f8",
+        "x": 520,
+        "y": 360,
+        "wires": [
+            [
+                "516905b9.895464"
+            ]
+        ]
+    },
+    {
+        "id": "908313b6.1abcb",
+        "type": "inject",
+        "z": "60afae7.f61045",
+        "name": "PWS Historical Averages by Date",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 250,
+        "y": 360,
+        "wires": [
+            [
+                "f1e7b71e.c678c8"
+            ]
+        ]
+    },
+    {
+        "id": "516905b9.895464",
+        "type": "debug",
+        "z": "60afae7.f61045",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 770,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "69912477.b08cd4",
+        "type": "pws-historical",
+        "z": "60afae7.f61045",
+        "name": "",
+        "stationid": "",
+        "units": "e",
+        "date": "20191101",
+        "range": "hourly",
+        "apikey": "ba693fed.4c01f8",
+        "x": 520,
+        "y": 400,
+        "wires": [
+            [
+                "e6fb3331.8ff6a"
+            ]
+        ]
+    },
+    {
+        "id": "98cba034.a050b8",
+        "type": "inject",
+        "z": "60afae7.f61045",
+        "name": "PWS Historical Hourly Averages by Date",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 220,
+        "y": 400,
+        "wires": [
+            [
+                "69912477.b08cd4"
+            ]
+        ]
+    },
+    {
+        "id": "e6fb3331.8ff6a",
+        "type": "debug",
+        "z": "60afae7.f61045",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 770,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "296bfa4e.dddfce",
+        "type": "pws-historical",
+        "z": "60afae7.f61045",
+        "name": "",
+        "stationid": "",
+        "units": "e",
+        "date": "20191101",
+        "range": "all",
+        "apikey": "ba693fed.4c01f8",
+        "x": 520,
+        "y": 440,
+        "wires": [
+            [
+                "76e67514.bc11a4"
+            ]
+        ]
+    },
+    {
+        "id": "1c3c7b47.f47535",
+        "type": "inject",
+        "z": "60afae7.f61045",
+        "name": "PWS Historical All Data by Date",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 250,
+        "y": 440,
+        "wires": [
+            [
+                "296bfa4e.dddfce"
+            ]
+        ]
+    },
+    {
+        "id": "76e67514.bc11a4",
+        "type": "debug",
+        "z": "60afae7.f61045",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 770,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "848d9977.07ee58",
+        "type": "comment",
+        "z": "60afae7.f61045",
+        "name": "Query PWS Current Conditions / Observations for any Personal Weather Station",
+        "info": "",
+        "x": 320,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "1797132e.1ef7ed",
+        "type": "comment",
+        "z": "60afae7.f61045",
+        "name": "Query Historical Data from any Personal Weather Station",
+        "info": "",
+        "x": 250,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "8a2848a7.6ae26",
+        "type": "inject",
+        "z": "60afae7.f61045",
+        "name": "Current PWS Observations elsewhere",
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 210,
+        "y": 140,
+        "wires": [
+            [
+                "af1d2f1a.8f7e4"
+            ]
+        ]
+    },
+    {
+        "id": "c7827503.8fb508",
+        "type": "pws-forecast",
+        "z": "60afae7.f61045",
+        "name": "",
+        "units": "e",
+        "locationtype": "postalKey",
+        "location": "07450:US",
+        "lang": "en-US",
+        "apikey": "ba693fed.4c01f8",
+        "x": 520,
+        "y": 560,
+        "wires": [
+            [
+                "6d89de08.f0c248"
+            ]
+        ]
+    },
+    {
+        "id": "49e3776.bdaa108",
+        "type": "inject",
+        "z": "60afae7.f61045",
+        "name": "5 Day Forecast by Postal Code",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 250,
+        "y": 560,
+        "wires": [
+            [
+                "c7827503.8fb508"
+            ]
+        ]
+    },
+    {
+        "id": "6d89de08.f0c248",
+        "type": "debug",
+        "z": "60afae7.f61045",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 770,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "17903445.5b7ab4",
+        "type": "comment",
+        "z": "60afae7.f61045",
+        "name": "5 Day Forecast",
+        "info": "",
+        "x": 120,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "392330de.7153c",
+        "type": "pws-forecast",
+        "z": "60afae7.f61045",
+        "name": "",
+        "units": "e",
+        "locationtype": "geocode",
+        "location": "40.98,-74.1",
+        "lang": "en-US",
+        "apikey": "ba693fed.4c01f8",
+        "x": 520,
+        "y": 600,
+        "wires": [
+            [
+                "7b81d355.a0b26c"
+            ]
+        ]
+    },
+    {
+        "id": "432be774.12d0b",
+        "type": "inject",
+        "z": "60afae7.f61045",
+        "name": "5 Day Forecast by GeoCode",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 260,
+        "y": 600,
+        "wires": [
+            [
+                "392330de.7153c"
+            ]
+        ]
+    },
+    {
+        "id": "7b81d355.a0b26c",
+        "type": "debug",
+        "z": "60afae7.f61045",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 770,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "75d8cd72.a54024",
+        "type": "pws-forecast",
+        "z": "60afae7.f61045",
+        "name": "",
+        "units": "e",
+        "locationtype": "iataCode",
+        "location": "EWR",
+        "lang": "en-US",
+        "apikey": "ba693fed.4c01f8",
+        "x": 520,
+        "y": 640,
+        "wires": [
+            [
+                "87899939.c0e55"
+            ]
+        ]
+    },
+    {
+        "id": "62b30898.0cfef",
+        "type": "inject",
+        "z": "60afae7.f61045",
+        "name": "5 Day Forecast by IATA Airport Code",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 240,
+        "y": 640,
+        "wires": [
+            [
+                "75d8cd72.a54024"
+            ]
+        ]
+    },
+    {
+        "id": "87899939.c0e55",
+        "type": "debug",
+        "z": "60afae7.f61045",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 770,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "e82cab41.432088",
+        "type": "pws-forecast",
+        "z": "60afae7.f61045",
+        "name": "",
+        "units": "e",
+        "locationtype": "icaoCode",
+        "location": "KEWR",
+        "lang": "en-US",
+        "apikey": "ba693fed.4c01f8",
+        "x": 520,
+        "y": 680,
+        "wires": [
+            [
+                "8cba0c9a.e01db8"
+            ]
+        ]
+    },
+    {
+        "id": "12816772.4e1731",
+        "type": "inject",
+        "z": "60afae7.f61045",
+        "name": "5 Day Forecast by ICAO Airport Code",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 230,
+        "y": 680,
+        "wires": [
+            [
+                "e82cab41.432088"
+            ]
+        ]
+    },
+    {
+        "id": "8cba0c9a.e01db8",
+        "type": "debug",
+        "z": "60afae7.f61045",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 770,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "bf93dbe9.883de",
+        "type": "pws-forecast",
+        "z": "60afae7.f61045",
+        "name": "",
+        "units": "e",
+        "locationtype": "placeid",
+        "location": "327145917e06d09373dd2760425a88622a62d248fd97550eb4883737d8d1173b",
+        "lang": "en-US",
+        "apikey": "ba693fed.4c01f8",
+        "x": 520,
+        "y": 720,
+        "wires": [
+            [
+                "b444366a.92aad8"
+            ]
+        ]
+    },
+    {
+        "id": "66c30b69.feddb4",
+        "type": "inject",
+        "z": "60afae7.f61045",
+        "name": "5 Day Forecast by Postal Code",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 250,
+        "y": 720,
+        "wires": [
+            [
+                "bf93dbe9.883de"
+            ]
+        ]
+    },
+    {
+        "id": "b444366a.92aad8",
+        "type": "debug",
+        "z": "60afae7.f61045",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 770,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "cc26f90.d84b688",
+        "type": "comment",
+        "z": "60afae7.f61045",
+        "name": "Recent PWS Observations",
+        "info": "",
+        "x": 170,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "3f281a15.40c126",
+        "type": "inject",
+        "z": "60afae7.f61045",
+        "name": "7 Day PWS Daily Summary",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 260,
+        "y": 840,
+        "wires": [
+            [
+                "6b62255f.7dd2ac"
+            ]
+        ]
+    },
+    {
+        "id": "6b62255f.7dd2ac",
+        "type": "pws-7day-summary",
+        "z": "60afae7.f61045",
+        "name": "",
+        "stationid": "",
+        "units": "e",
+        "apikey": "ba693fed.4c01f8",
+        "x": 540,
+        "y": 840,
+        "wires": [
+            [
+                "44b51394.d3d324"
+            ]
+        ]
+    },
+    {
+        "id": "44b51394.d3d324",
+        "type": "debug",
+        "z": "60afae7.f61045",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 770,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "293a0680.115bea",
+        "type": "pws-7day-hourly",
+        "z": "60afae7.f61045",
+        "name": "",
+        "stationid": "",
+        "units": "e",
+        "apikey": "ba693fed.4c01f8",
+        "x": 530,
+        "y": 880,
+        "wires": [
+            [
+                "6fec8552.3eda0c"
+            ]
+        ]
+    },
+    {
+        "id": "d979058f.d75fd8",
+        "type": "inject",
+        "z": "60afae7.f61045",
+        "name": "7 Day PWS Hourly Summary",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 260,
+        "y": 880,
+        "wires": [
+            [
+                "293a0680.115bea"
+            ]
+        ]
+    },
+    {
+        "id": "6fec8552.3eda0c",
+        "type": "debug",
+        "z": "60afae7.f61045",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 770,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "f45a1e7d.a0286",
+        "type": "pws-1day-all",
+        "z": "60afae7.f61045",
+        "name": "",
+        "stationid": "",
+        "units": "e",
+        "apikey": "ba693fed.4c01f8",
+        "x": 520,
+        "y": 920,
+        "wires": [
+            [
+                "1df48582.6949f2"
+            ]
+        ]
+    },
+    {
+        "id": "1df48582.6949f2",
+        "type": "debug",
+        "z": "60afae7.f61045",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 770,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "cc71523b.ebb288",
+        "type": "inject",
+        "z": "60afae7.f61045",
+        "name": "1 Day All PWS Records",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 280,
+        "y": 920,
+        "wires": [
+            [
+                "f45a1e7d.a0286"
+            ]
+        ]
+    },
+    {
+        "id": "5875d07f.015118",
+        "type": "change",
+        "z": "60afae7.f61045",
+        "name": "Inject / test params",
+        "rules": [
+            {
+                "t": "set",
+                "p": "StationID",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "date",
+                "pt": "msg",
+                "to": "futz",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "date",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "date",
+                "pt": "msg",
+                "to": "1579560576859",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "date",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "date",
+                "pt": "msg",
+                "to": "2020/01/20",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "date",
+                "pt": "msg",
+                "to": "2020-01-19",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "20200118",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 290,
+        "y": 320,
+        "wires": [
+            [
+                "f1e7b71e.c678c8"
+            ]
+        ]
+    },
+    {
+        "id": "870c30f7.a5d8f8",
+        "type": "inject",
+        "z": "60afae7.f61045",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 120,
+        "y": 320,
+        "wires": [
+            [
+                "5875d07f.015118"
+            ]
+        ]
+    }
+]

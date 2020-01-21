@@ -1,0 +1,604 @@
+[
+    {
+        "id": "282fafd4.df968",
+        "type": "tab",
+        "label": "PWS Dashboard",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "d2d665ce.c48898",
+        "type": "debug",
+        "z": "282fafd4.df968",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 810,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "36df2040.dab0e8",
+        "type": "pws-observations",
+        "z": "282fafd4.df968",
+        "name": "",
+        "stationid": "",
+        "units": "e",
+        "apikey": "ba693fed.4c01f8",
+        "x": 590,
+        "y": 140,
+        "wires": [
+            [
+                "d2d665ce.c48898",
+                "73e52992.bb7fd8"
+            ]
+        ]
+    },
+    {
+        "id": "384cef20.42b128",
+        "type": "pws-historical",
+        "z": "282fafd4.df968",
+        "name": "",
+        "stationid": "",
+        "units": "e",
+        "date": "",
+        "range": "daily",
+        "apikey": "ba693fed.4c01f8",
+        "x": 540,
+        "y": 540,
+        "wires": [
+            [
+                "599bbba7.ab986c"
+            ]
+        ]
+    },
+    {
+        "id": "887582a4.04a18",
+        "type": "debug",
+        "z": "282fafd4.df968",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 990,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "36bc66ae.8b41fa",
+        "type": "comment",
+        "z": "282fafd4.df968",
+        "name": "Query PWS Current Conditions / Observations for any Personal Weather Station",
+        "info": "",
+        "x": 320,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "7c258cf.19a1ef4",
+        "type": "comment",
+        "z": "282fafd4.df968",
+        "name": "Query Historical Data from PWS",
+        "info": "",
+        "x": 170,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "27c10673.26a442",
+        "type": "pws-forecast",
+        "z": "282fafd4.df968",
+        "name": "",
+        "units": "e",
+        "locationtype": "postalKey",
+        "location": "07450:US",
+        "lang": "en-US",
+        "apikey": "ba693fed.4c01f8",
+        "x": 580,
+        "y": 240,
+        "wires": [
+            [
+                "ef83ba6e.c8424"
+            ]
+        ]
+    },
+    {
+        "id": "b7b794a8.d80fb8",
+        "type": "comment",
+        "z": "282fafd4.df968",
+        "name": "5 Day Forecast",
+        "info": "",
+        "x": 120,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "1a5eba9a.169b45",
+        "type": "comment",
+        "z": "282fafd4.df968",
+        "name": "Recent PWS Observations",
+        "info": "",
+        "x": 150,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "95f6a021.aa9ba8",
+        "type": "debug",
+        "z": "282fafd4.df968",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 850,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "795c58a0.25b13",
+        "type": "pws-7day-hourly",
+        "z": "282fafd4.df968",
+        "name": "",
+        "stationid": "",
+        "units": "e",
+        "apikey": "ba693fed.4c01f8",
+        "x": 410,
+        "y": 420,
+        "wires": [
+            [
+                "9f3b16b0.6f231",
+                "cf262cff.8843e"
+            ]
+        ]
+    },
+    {
+        "id": "cf262cff.8843e",
+        "type": "debug",
+        "z": "282fafd4.df968",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 610,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "4adddd56.4d9fc4",
+        "type": "ui_text_input",
+        "z": "282fafd4.df968",
+        "name": "",
+        "label": "Enter StationID",
+        "tooltip": "Eg KNJRIDGE24",
+        "group": "a91cd93c.4ca95",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "",
+        "x": 120,
+        "y": 100,
+        "wires": [
+            [
+                "a41d8185.128c7"
+            ]
+        ]
+    },
+    {
+        "id": "a41d8185.128c7",
+        "type": "change",
+        "z": "282fafd4.df968",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "StationID",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 390,
+        "y": 100,
+        "wires": [
+            [
+                "1d33165b.0656ea"
+            ]
+        ]
+    },
+    {
+        "id": "8fd9fd9d.76cff",
+        "type": "ui_button",
+        "z": "282fafd4.df968",
+        "name": "",
+        "group": "a91cd93c.4ca95",
+        "order": 2,
+        "width": "6",
+        "height": "1",
+        "passthru": false,
+        "label": "Current PWS Observations",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 160,
+        "y": 140,
+        "wires": [
+            [
+                "6e439dd2.a9fbc4"
+            ]
+        ]
+    },
+    {
+        "id": "6e439dd2.a9fbc4",
+        "type": "change",
+        "z": "282fafd4.df968",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "StationID",
+                "pt": "msg",
+                "to": "StationID",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 390,
+        "y": 140,
+        "wires": [
+            [
+                "36df2040.dab0e8"
+            ]
+        ]
+    },
+    {
+        "id": "8ac2d6c4.119228",
+        "type": "ui_template",
+        "z": "282fafd4.df968",
+        "group": "ada0ce32.b103c",
+        "name": "",
+        "order": 1,
+        "width": "12",
+        "height": "4",
+        "format": "<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "templateScope": "local",
+        "x": 980,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "73e52992.bb7fd8",
+        "type": "function",
+        "z": "282fafd4.df968",
+        "name": "All Records",
+        "func": "if( typeof(msg.payload.observations[0]) == 'undefined') {\n    return null;\n}\n\nmsg.template = \"\";\nfor (const [key, value] of Object.entries(msg.payload.observations[0])) {\n  msg.template = msg.template + key + \":\" + value +\"<br>\";\n}\n\nvar weather = {};\nif( typeof( msg.payload.observations[0].metric) != 'undefined') {\n    weather = msg.payload.observations[0].metric;\n} else if( typeof( msg.payload.observations[0].imperial) != 'undefined') {\n    weather = msg.payload.observations[0].imperial;\n} else if( typeof( msg.payload.observations[0].uk_hybrid) != 'undefined') {\n    weather = msg.payload.observations[0].uk_hybrid;\n}    \n   \n\nfor (const [key, value] of Object.entries(weather)) {\n  console.log(key, value);\n  msg.template = msg.template + key + \":\" + value +\"<br>\";\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 810,
+        "y": 140,
+        "wires": [
+            [
+                "8ac2d6c4.119228"
+            ]
+        ]
+    },
+    {
+        "id": "1d33165b.0656ea",
+        "type": "debug",
+        "z": "282fafd4.df968",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 570,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "7f93eff4.ad8d48",
+        "type": "ui_button",
+        "z": "282fafd4.df968",
+        "name": "",
+        "group": "a91cd93c.4ca95",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Today Forecast",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 120,
+        "y": 240,
+        "wires": [
+            [
+                "27c10673.26a442"
+            ]
+        ]
+    },
+    {
+        "id": "ef83ba6e.c8424",
+        "type": "ui_text",
+        "z": "282fafd4.df968",
+        "group": "ada0ce32.b103c",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Forecast",
+        "format": "{{msg.payload.narrative[0]}}",
+        "layout": "row-spread",
+        "x": 800,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "7af5ad2e.7e20ec",
+        "type": "ui_button",
+        "z": "282fafd4.df968",
+        "name": "",
+        "group": "a91cd93c.4ca95",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "7 Day PWS Hourly Summary",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 160,
+        "y": 420,
+        "wires": [
+            [
+                "795c58a0.25b13"
+            ]
+        ]
+    },
+    {
+        "id": "9f3b16b0.6f231",
+        "type": "function",
+        "z": "282fafd4.df968",
+        "name": "Get HourlyAvgTemp",
+        "func": "if( typeof( msg.payload.observations[0]) == 'undefined') {\n    return null;\n}\n\nvar HourlyAvgTempChart = [{\n    \"series\":[\"7 Day Hourly Summary\"],\n    \"data\":[[]],\n    \"labels\":[\"Hourly Avg Temp\"]\n}];\n\n\nfor( var i=0; i < msg.payload.observations.length; i++) {\n    AvgTemp = {\"x\":msg.payload.observations[i].epoch,\"y\":msg.payload.observations[i].imperial.tempAvg}\n    HourlyAvgTempChart[0].data[0].push(AvgTemp) ;\n}\n\nmsg.payload = HourlyAvgTempChart;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 640,
+        "y": 420,
+        "wires": [
+            [
+                "95f6a021.aa9ba8",
+                "785597bb.acbdf8"
+            ]
+        ]
+    },
+    {
+        "id": "785597bb.acbdf8",
+        "type": "ui_chart",
+        "z": "282fafd4.df968",
+        "name": "",
+        "group": "ada0ce32.b103c",
+        "order": 2,
+        "width": "12",
+        "height": "4",
+        "label": "7 Day PWS Hourly Avg Temp",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "50",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 900,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "89db0f5c.801e58",
+        "type": "ui_date_picker",
+        "z": "282fafd4.df968",
+        "name": "",
+        "label": "Historical Date",
+        "group": "a91cd93c.4ca95",
+        "order": 8,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "topic": "",
+        "x": 120,
+        "y": 540,
+        "wires": [
+            [
+                "7890ac05.5252bc"
+            ]
+        ]
+    },
+    {
+        "id": "7890ac05.5252bc",
+        "type": "change",
+        "z": "282fafd4.df968",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "date",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 330,
+        "y": 540,
+        "wires": [
+            [
+                "384cef20.42b128",
+                "9825a586.39c16"
+            ]
+        ]
+    },
+    {
+        "id": "9825a586.39c16",
+        "type": "debug",
+        "z": "282fafd4.df968",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 510,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "599bbba7.ab986c",
+        "type": "change",
+        "z": "282fafd4.df968",
+        "name": "Historical Date AvgTemp ",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.observations[0].imperial.tempAvg",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 770,
+        "y": 540,
+        "wires": [
+            [
+                "216575bf.741902",
+                "887582a4.04a18"
+            ]
+        ]
+    },
+    {
+        "id": "216575bf.741902",
+        "type": "ui_gauge",
+        "z": "282fafd4.df968",
+        "name": "",
+        "group": "ada0ce32.b103c",
+        "order": 7,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Historical Date AvgTemp",
+        "label": "F",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#0054ff",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 1030,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "a91cd93c.4ca95",
+        "type": "ui_group",
+        "z": "",
+        "name": "PWS Queries",
+        "tab": "a105e68a.f1f57",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "ada0ce32.b103c",
+        "type": "ui_group",
+        "z": "",
+        "name": "PWS Results",
+        "tab": "a105e68a.f1f57",
+        "order": 2,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "a105e68a.f1f57",
+        "type": "ui_tab",
+        "z": "",
+        "name": "PWS Example",
+        "icon": "wi-wu-partlycloudy",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]

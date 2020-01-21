@@ -1,0 +1,77 @@
+<script type="text/javascript">
+  RED.nodes.registerType('pws-historical',{
+    	category: 'Weather',
+    	color:	"#a2a9b0",
+    	icon: "icons/wi-wu-partlycloudy.png",
+    	inputs:1,
+    	outputs:1,
+    	defaults: {
+    		name: { value:""},
+        stationid: { value:""},
+        units: { value:"e"},
+        date: { value:"" },
+        range: { value:"daily",required:true},
+        apikey: {value:"", type:"pwsapikey",required: true}
+    	},
+	label: function() {
+		return this.name||"PWS Historical";
+	}
+	});
+</script>
+
+
+<script type="text/x-red" data-template-name="pws-historical">
+  <div class="form-row">
+    <label for="node-input-apikey"><i class="fa fa-key"></i> API Key</label>
+    <input type="text" id="node-input-apikey">
+  </div>
+	<div class="form-row">
+		<label for="node-input-stationid"><i class="fa fa-tag"></i> StationID</label>
+		<input type="text" id="node-input-stationid">
+	</div>
+  <div class="form-row">
+   <label for="node-input-date"><i class="fa fa-calendar"></i> Select Date</label>
+    <input type="text" id="node-input-date" placeholder="yyyymmdd">
+  </div>
+  <div class="form-row">
+   <label for="node-input-range"><i class="fa fa-area-chart"></i> Range</label>
+    <select id="node-input-range">
+      <option value="hourly">Hourly Average History for Date</option>
+      <option value="daily">Daily Averages</option>
+      <option value="all">All Records for Date</option>
+    </select>
+  </div>
+  <div class="form-row">
+   <label for="node-input-units"><i class="fa fa-thermometer-half"></i> Unit of Measure</label>
+    <select id="node-input-units">
+      <option value="e">English units</option>
+      <option value="m">Metric units</option>
+      <option value="h">Hybrid units (UK)</option>
+    </select>
+  </div>
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+    <input type="text" id="node-input-name">
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="pws-historical">
+	<p>Personal Weather Station (PWS) Historical Data returns the historical PWS data for a single date.</p>
+  <p>Query personal weather station data for a specific date returning hourly data, summary data for the entire day, or all records.</p>
+  <p>See the <a target="_blank" href="https://docs.google.com/document/d/1eKCnKXI9xnoMGRRzOL1xPCBihNV2rOet08qpE_gArAY">online documentation</a>
+for more information about the <strong>The Weather Company APIs for Personal Weather Stations</strong>.</p>
+  <h3>Inputs:</h3>
+  <dl class="message-properties">
+      <dt class="optional">StationID <span class="property-type">string</span></dt>
+      <dd>If specified, override edit panel. Station ID as registered by wunderground.com</dd>
+      <dt class="optional">date <span class="property-type">string</span></dt>
+      <dd>If specified, override edit panel. Format can be yyyymmdd, yyyy-mm-dd, yyyy/mm/dd or a Unix timestamp.</dd>
+
+  </dl>
+  <h3>Outputs:</h3>
+  <h4><strong>msg.payload.observations</strong></h4>
+  <ul>
+  <li>Array of json objects containing weather data elements</li>
+  <li>Find details on the <a target="_blank" href="https://ibm.co/v2PWSh">PWS Historical APIs</a> data elements and definitions.</li>
+  </ul>
+</script>
