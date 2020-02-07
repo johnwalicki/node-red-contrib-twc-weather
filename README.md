@@ -5,6 +5,8 @@ These nodes replace the depreciated **node-red-node-weather-underground** with n
 
 The set of nodes in this package implement the [APIs for Personal Weather Station Contributors](https://docs.google.com/document/d/1eKCnKXI9xnoMGRRzOL1xPCBihNV2rOet08qpE_gArAY).
 
+The Weather Company provides [TWC Weather Data Packages](https://business.weather.com/products/weather-data-packages) that are available for purchase. Node-RED nodes in this package implement select API services.
+
 ## Install
 
 Either use the Editor - Menu - Manage Palette - Install option, or run the following command in your Node-RED user directory (typically `~/.node-red`).
@@ -20,13 +22,16 @@ Register your Personal Weather Station at [wunderground](https://www.wundergroun
 
 ## node-red-contrib-twc-weather Nodes
 
-This Node-RED package creates six nodes in your Node-RED palette.
+This Node-RED package creates six PWS nodes in your Node-RED palette.
 - **pws observations** - Personal Weather Station (PWS) Current Conditions returns the current conditions observations.
 - **pws historical** - Personal Weather Station (PWS) Historical Data returns the historical PWS data for a single date ( hourly data, summary data for the entire day, or all records )
 - **pws forecast** - The Daily Forecast API is sourced from the The Weather Company Forecast system. This TWC API returns the 5 Day Daily weather forecast.
 - **pws 7 day summary** - Personal Weather Station (PWS) Daily Summary Historical Observations returns the 7 day summary of daily observations.
 - **pws 7 day hourly** - Personal Weather Stations (PWS) Hourly Historical Observations returns the hourly records for each days observations report.
 - **pws 1 day all** - Personal Weather Station (PWS) Rapid Historical Observations returns all of the observations records for a specific date.
+
+This Node-RED package creates TWC nodes in your Node-RED palette.
+- **TWC Health Forecast** - The Cognitive Health Forecast API provides forecast data for the risk of allergy, migraine, cold and flu, or pain for a given location and for a period of one to 15 days in advance.
 
 ## Examples
 
