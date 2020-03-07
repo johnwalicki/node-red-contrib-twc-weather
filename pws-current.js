@@ -29,18 +29,28 @@ module.exports = function(RED) {
     }
 
     node.on('input', function (msg) {
-      var WhichStationId = "";
-      if( msg.StationID ) {
-        WhichStationId = msg.StationID.toUpperCase() ;
+      msg.twcparams = msg.twcparams || {};
+
+      if( typeof msg.twcparams.units == 'undefined' ) {
+        msg.twcparams.units = units; // take the default or the node setting
+      } else if( "emhEMH".indexOf(msg.twcparams.units) >= 0 ) {
+        // passed in param is valid, override default or node setting
+        msg.twcparams.units = msg.twcparams.units.toLowerCase();
       } else {
-        WhichStationId = StationId.toUpperCase()
+        msg.twcparams.units = units; // take the default or the node setting
       }
-      if( !WhichStationId ) {
+
+      var curStationId = StationId;
+      if( typeof msg.twcparams.StationID != 'undefined' ) {
+        curStationId = msg.twcparams.StationID.toUpperCase();
+      }
+      if( !curStationId ) {
         // No StationID is set. Abort with error
         msg.payload = "Error: No StationID provided.";
         node.send(msg);
       } else {
-        request('https://api.weather.com/v2/pws/observations/current?stationId=' + WhichStationId +'&format=json&units='+units+'&apiKey='+apiKey)
+        msg.twcparams.StationID = curStationId;
+        request('https://api.weather.com/v2/pws/observations/current?stationId=' + curStationId +'&format=json&units='+msg.twcparams.units+'&apiKey='+apiKey)
           .then(function (response) {
             msg.payload = JSON.parse(response);
             node.send(msg);

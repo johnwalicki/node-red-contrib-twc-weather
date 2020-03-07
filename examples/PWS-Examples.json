@@ -37,7 +37,7 @@
         "tostatus": false,
         "complete": "payload",
         "targetType": "msg",
-        "x": 750,
+        "x": 810,
         "y": 100,
         "wires": []
     },
@@ -47,9 +47,9 @@
         "z": "60afae7.f61045",
         "name": "",
         "stationid": "",
-        "units": "m",
+        "units": "e",
         "apikey": "ba693fed.4c01f8",
-        "x": 530,
+        "x": 570,
         "y": 100,
         "wires": [
             [
@@ -63,9 +63,9 @@
         "z": "60afae7.f61045",
         "name": "",
         "stationid": "",
-        "units": "e",
+        "units": "m",
         "apikey": "ba693fed.4c01f8",
-        "x": 530,
+        "x": 570,
         "y": 140,
         "wires": [
             [
@@ -82,8 +82,9 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
-        "x": 750,
+        "complete": "true",
+        "targetType": "full",
+        "x": 790,
         "y": 140,
         "wires": []
     },
@@ -97,7 +98,7 @@
         "date": "",
         "range": "daily",
         "apikey": "ba693fed.4c01f8",
-        "x": 520,
+        "x": 560,
         "y": 360,
         "wires": [
             [
@@ -134,8 +135,9 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
-        "x": 770,
+        "complete": "true",
+        "targetType": "full",
+        "x": 790,
         "y": 360,
         "wires": []
     },
@@ -149,7 +151,7 @@
         "date": "20191101",
         "range": "hourly",
         "apikey": "ba693fed.4c01f8",
-        "x": 520,
+        "x": 560,
         "y": 400,
         "wires": [
             [
@@ -187,7 +189,7 @@
         "console": false,
         "tostatus": false,
         "complete": "false",
-        "x": 770,
+        "x": 810,
         "y": 400,
         "wires": []
     },
@@ -201,7 +203,7 @@
         "date": "20191101",
         "range": "all",
         "apikey": "ba693fed.4c01f8",
-        "x": 520,
+        "x": 560,
         "y": 440,
         "wires": [
             [
@@ -239,7 +241,7 @@
         "console": false,
         "tostatus": false,
         "complete": "false",
-        "x": 770,
+        "x": 810,
         "y": 440,
         "wires": []
     },
@@ -275,7 +277,7 @@
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
-        "x": 210,
+        "x": 190,
         "y": 140,
         "wires": [
             [
@@ -293,7 +295,7 @@
         "location": "07450:US",
         "lang": "en-US",
         "apikey": "ba693fed.4c01f8",
-        "x": 520,
+        "x": 560,
         "y": 560,
         "wires": [
             [
@@ -330,8 +332,9 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
-        "x": 770,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 810,
         "y": 560,
         "wires": []
     },
@@ -355,7 +358,7 @@
         "location": "40.98,-74.1",
         "lang": "en-US",
         "apikey": "ba693fed.4c01f8",
-        "x": 520,
+        "x": 560,
         "y": 600,
         "wires": [
             [
@@ -393,7 +396,7 @@
         "console": false,
         "tostatus": false,
         "complete": "false",
-        "x": 770,
+        "x": 810,
         "y": 600,
         "wires": []
     },
@@ -407,7 +410,7 @@
         "location": "EWR",
         "lang": "en-US",
         "apikey": "ba693fed.4c01f8",
-        "x": 520,
+        "x": 560,
         "y": 640,
         "wires": [
             [
@@ -445,7 +448,7 @@
         "console": false,
         "tostatus": false,
         "complete": "false",
-        "x": 770,
+        "x": 810,
         "y": 640,
         "wires": []
     },
@@ -459,7 +462,7 @@
         "location": "KEWR",
         "lang": "en-US",
         "apikey": "ba693fed.4c01f8",
-        "x": 520,
+        "x": 560,
         "y": 680,
         "wires": [
             [
@@ -497,7 +500,7 @@
         "console": false,
         "tostatus": false,
         "complete": "false",
-        "x": 770,
+        "x": 810,
         "y": 680,
         "wires": []
     },
@@ -511,7 +514,7 @@
         "location": "327145917e06d09373dd2760425a88622a62d248fd97550eb4883737d8d1173b",
         "lang": "en-US",
         "apikey": "ba693fed.4c01f8",
-        "x": 520,
+        "x": 560,
         "y": 720,
         "wires": [
             [
@@ -548,8 +551,9 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
-        "x": 770,
+        "complete": "true",
+        "targetType": "full",
+        "x": 790,
         "y": 720,
         "wires": []
     },
@@ -560,7 +564,7 @@
         "name": "Recent PWS Observations",
         "info": "",
         "x": 170,
-        "y": 800,
+        "y": 840,
         "wires": []
     },
     {
@@ -576,7 +580,7 @@
         "once": false,
         "onceDelay": 0.1,
         "x": 260,
-        "y": 840,
+        "y": 880,
         "wires": [
             [
                 "6b62255f.7dd2ac"
@@ -591,8 +595,8 @@
         "stationid": "",
         "units": "e",
         "apikey": "ba693fed.4c01f8",
-        "x": 540,
-        "y": 840,
+        "x": 580,
+        "y": 880,
         "wires": [
             [
                 "44b51394.d3d324"
@@ -609,8 +613,8 @@
         "console": false,
         "tostatus": false,
         "complete": "false",
-        "x": 770,
-        "y": 840,
+        "x": 810,
+        "y": 880,
         "wires": []
     },
     {
@@ -621,8 +625,8 @@
         "stationid": "",
         "units": "e",
         "apikey": "ba693fed.4c01f8",
-        "x": 530,
-        "y": 880,
+        "x": 570,
+        "y": 920,
         "wires": [
             [
                 "6fec8552.3eda0c"
@@ -642,7 +646,7 @@
         "once": false,
         "onceDelay": 0.1,
         "x": 260,
-        "y": 880,
+        "y": 920,
         "wires": [
             [
                 "293a0680.115bea"
@@ -659,8 +663,8 @@
         "console": false,
         "tostatus": false,
         "complete": "false",
-        "x": 770,
-        "y": 880,
+        "x": 810,
+        "y": 920,
         "wires": []
     },
     {
@@ -671,8 +675,8 @@
         "stationid": "",
         "units": "e",
         "apikey": "ba693fed.4c01f8",
-        "x": 520,
-        "y": 920,
+        "x": 560,
+        "y": 960,
         "wires": [
             [
                 "1df48582.6949f2"
@@ -689,8 +693,8 @@
         "console": false,
         "tostatus": false,
         "complete": "false",
-        "x": 770,
-        "y": 920,
+        "x": 810,
+        "y": 960,
         "wires": []
     },
     {
@@ -706,7 +710,7 @@
         "once": false,
         "onceDelay": 0.1,
         "x": 280,
-        "y": 920,
+        "y": 960,
         "wires": [
             [
                 "f45a1e7d.a0286"
@@ -721,9 +725,16 @@
         "rules": [
             {
                 "t": "set",
-                "p": "StationID",
+                "p": "twcparams",
                 "pt": "msg",
-                "to": "",
+                "to": "{}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "twcparams.StationID",
+                "pt": "msg",
+                "to": "KNJRIDGE22",
                 "tot": "str"
             },
             {
@@ -735,42 +746,42 @@
             },
             {
                 "t": "set",
-                "p": "date",
+                "p": "twcparams",
                 "pt": "msg",
-                "to": "",
-                "tot": "str"
+                "to": "{}",
+                "tot": "json"
             },
             {
                 "t": "set",
-                "p": "date",
+                "p": "twcparams.date",
                 "pt": "msg",
                 "to": "1579560576859",
                 "tot": "num"
             },
             {
                 "t": "set",
-                "p": "date",
+                "p": "twcparams.date",
                 "pt": "msg",
                 "to": "payload",
                 "tot": "msg"
             },
             {
                 "t": "set",
-                "p": "date",
+                "p": "twcparams.date",
                 "pt": "msg",
                 "to": "2020/01/20",
                 "tot": "str"
             },
             {
                 "t": "set",
-                "p": "date",
+                "p": "twcparams.date",
                 "pt": "msg",
                 "to": "2020-01-19",
                 "tot": "str"
             },
             {
                 "t": "set",
-                "p": "payload",
+                "p": "twcparams.payload",
                 "pt": "msg",
                 "to": "20200118",
                 "tot": "str"
@@ -808,5 +819,177 @@
                 "5875d07f.015118"
             ]
         ]
+    },
+    {
+        "id": "afd14094.616318",
+        "type": "inject",
+        "z": "60afae7.f61045",
+        "name": "Test",
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 90,
+        "y": 180,
+        "wires": [
+            [
+                "a0f90d1c.bd05"
+            ]
+        ]
+    },
+    {
+        "id": "a0f90d1c.bd05",
+        "type": "change",
+        "z": "60afae7.f61045",
+        "name": "set msg.twcparams input vars",
+        "rules": [
+            {
+                "t": "set",
+                "p": "twcparams",
+                "pt": "msg",
+                "to": "{\"StationID\":\"KNJRIDGE24\",\"units\":\"E\"}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "twcparams.units",
+                "pt": "msg",
+                "to": "e",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "twcparams.StationID",
+                "pt": "msg",
+                "to": "KNJRIDGE24",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "twcparams.location",
+                "pt": "msg",
+                "to": "EWR",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "twcparams.locationtype",
+                "pt": "msg",
+                "to": "iataCode",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 310,
+        "y": 180,
+        "wires": [
+            [
+                "af1d2f1a.8f7e4",
+                "9e126936.ee05"
+            ]
+        ]
+    },
+    {
+        "id": "9e126936.ee05",
+        "type": "debug",
+        "z": "60afae7.f61045",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "twcparams",
+        "targetType": "msg",
+        "x": 820,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "19b4b5.0071034c",
+        "type": "change",
+        "z": "60afae7.f61045",
+        "name": "set msg.twcparams input vars",
+        "rules": [
+            {
+                "t": "set",
+                "p": "twcparams",
+                "pt": "msg",
+                "to": "{\"StationID\":\"KNJRIDGE24\",\"units\":\"E\"}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "twcparams.units",
+                "pt": "msg",
+                "to": "e",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "twcparams.StationID",
+                "pt": "msg",
+                "to": "KNJRIDGE24",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "twcparams.location",
+                "pt": "msg",
+                "to": "EWR",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "twcparams.locationtype",
+                "pt": "msg",
+                "to": "iataCode",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 310,
+        "y": 760,
+        "wires": [
+            [
+                "bf93dbe9.883de"
+            ]
+        ]
+    },
+    {
+        "id": "b9f838d0.e2d158",
+        "type": "inject",
+        "z": "60afae7.f61045",
+        "name": "Test",
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 90,
+        "y": 760,
+        "wires": [
+            [
+                "19b4b5.0071034c"
+            ]
+        ]
+    },
+    {
+        "id": "ba693fed.4c01f8",
+        "type": "pwsapikey",
+        "z": "",
+        "name": "Ridgewood"
     }
 ]

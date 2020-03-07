@@ -63,10 +63,29 @@
 The data values in this API are correctly populated into Day, Night, or 24-hour temporal segments. These segments are separate objects in the response.
   <p>See the <a target="_blank" href="https://docs.google.com/document/d/1eKCnKXI9xnoMGRRzOL1xPCBihNV2rOet08qpE_gArAY">online documentation</a>
 for more information about the <strong>The Weather Company APIs for Personal Weather Stations</strong>.</p>
-  <h3>Output:</h3>
-  <h4><strong>msg.payload</strong></h4>
-  <ul>
-    <li>json object containing forecast data elements</li>
-    <li>Find details on the <a target="_blank" href="https://ibm.co/v3FFDP">TWC Daily Forecast (5 Day)</a> data elements and definitions.</li>
-  </ul>
+  <h3>Inputs:</h3>
+  <dl class="message-properties">
+    <dt class="optional">msg.twcparams.locationtype <span class="property-type">string</span></dt>
+    <dd>If specified, override edit panel.</dd>
+    <dd>"geocode" - Request by Geocode</dd>
+    <dd>"iataCode" - Request by IATA Airport Code</dd>
+    <dd>"icaoCode" - Request by ICAO Airport Code</dd>
+    <dd>"placeid" - Request by Place ID</dd>
+    <dd>"postalKey" - Request by Postal Key</dd>
+    <dt class="optional">msg.twcparams.location <span class="property-type">string</span></dt>
+    <dd>If specified, override edit panel. See examples in the above documentation for geocodes, IATA/ICAO airport codes, Place ID and Postal Keys</dd>
+    <dt class="optional">msg.twcparams.lang <span class="property-type">string</span></dt>
+    <dd>If specified, override edit panel. ISO 639-1 standard language codes</dd>
+    <dt class="optional">msg.twcparams.units <span class="property-type">string</span></dt>
+    <dd>If specified, override edit panel. 'e' - English units, 'm' - Metric units, 'h' - Hybrid units</dd>
+  </dl>
+  <h3>Outputs:</h3>
+  <dl class="message-properties">
+    <dt class="optional">msg.payload.observations <span class="property-type">object</span></dt>
+    <dd>Array of json objects containing weather data elements</dd>
+    <dd>Find details on the <a target="_blank" href="https://ibm.co/v3FFDP">TWC Daily Forecast (5 Day)</a> data elements and definitions..</dd>
+    <dt class="optional">msg.twcparams <span class="property-type">object</span></dt>
+    <dd>Array of json objects containing request parameters</dd>
+  </dl>
+
 </script>

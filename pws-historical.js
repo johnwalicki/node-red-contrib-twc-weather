@@ -33,17 +33,17 @@ module.exports = function(RED) {
     function dateparser( msg ) {
       // Date validation and reformatting
       var teststr;
-      if( msg.date ) {
+      if( msg.twcparams.date ) {
         // The pws date to query was passed in as a msg key value pair
         // override any value specified in the edit panel
-        var time = new Date(msg.date);
+        var time = new Date(msg.twcparams.date);
         if( !isNaN(time) ) {
           // msg.date contains a timestamp
           // Grab the date 2020-01-01 from the ISO format
           teststr = time.toISOString().substr(0,10);
         } else {
           // cast from number to string in case it was a number
-          teststr = ""+msg.date;
+          teststr = ""+msg.twcparams.date;
         }
       } else {
         // Use the date provided in the edit panel
@@ -67,18 +67,33 @@ module.exports = function(RED) {
         return;
       }
 
-      var WhichStationId = "";
-      if( msg.StationID ) {
-        WhichStationId = msg.StationID.toUpperCase() ;
-      } else {
-        WhichStationId = StationId.toUpperCase()
+      msg.twcparams = msg.twcparams || {};
+      msg.twcparams.date = datestr ;
+
+      if( typeof msg.twcparams.range == 'undefined' ) {
+        msg.twcparams.range = range;
       }
-      if( !WhichStationId ) {
+
+      if( typeof msg.twcparams.units == 'undefined' ) {
+        msg.twcparams.units = units; // take the default or the node setting
+      } else if( "emhEMH".indexOf(msg.twcparams.units) >= 0 ) {
+        // passed in param is valid, override default or node setting
+        msg.twcparams.units = msg.twcparams.units.toLowerCase();
+      } else {
+        msg.twcparams.units = units; // take the default or the node setting
+      }
+
+      var curStationId = StationId;
+      if( typeof msg.twcparams.StationID != 'undefined' ) {
+        curStationId = msg.twcparams.StationID.toUpperCase();
+      }
+      if( !curStationId ) {
         // No StationID is set. Abort with error
         msg.payload = "Error: No StationID provided.";
         node.send(msg);
       } else {
-        request('https://api.weather.com/v2/pws/history/'+ range + '?stationId='+ WhichStationId +'&format=json&date='+datestr+'&units='+units+'&apiKey='+apiKey)
+        msg.twcparams.StationID = curStationId;
+        request('https://api.weather.com/v2/pws/history/'+ msg.twcparams.range + '?stationId='+ curStationId +'&format=json&date='+datestr+'&units='+msg.twcparams.units+'&apiKey='+apiKey)
           .then(function (response) {
               msg.payload = JSON.parse(response);
               node.send(msg);

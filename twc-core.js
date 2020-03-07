@@ -1,5 +1,5 @@
 module.exports = function(RED) {
-  function weatherPWS5DayForecastNode( n ) {
+  function weatherTWCDailyForecastNode( n ) {
     RED.nodes.createNode(this,n );
     var node = this;
     var units = n.units;
@@ -7,6 +7,7 @@ module.exports = function(RED) {
     var locationtype = n.locationtype;
     var location= n.location;
     var lang = n.lang;
+    var range = n.range;
     var pwsConfigNode;
     var apiKey;
     var request = require('request-promise');
@@ -21,9 +22,11 @@ module.exports = function(RED) {
     if (!lang) {
       lang = 'en-US';
     }
+    if (!range) {
+      range = '5day';
+    }
 
     node.on('input', function (msg) {
-
       msg.twcparams = msg.twcparams || {};
 
       if( typeof msg.twcparams.units == 'undefined' ) {
@@ -39,6 +42,10 @@ module.exports = function(RED) {
         msg.twcparams.lang = lang;
       }
 
+      if( typeof msg.twcparams.range == 'undefined' ) {
+        msg.twcparams.range = range;
+      }
+
       if( typeof msg.twcparams.location == 'undefined' ) {
         msg.twcparams.location = location;
       }
@@ -47,7 +54,7 @@ module.exports = function(RED) {
         msg.twcparams.locationtype = locationtype;
       }
 
-      request('https://api.weather.com/v3/wx/forecast/daily/5day?'+ msg.twcparams.locationtype + '='+ msg.twcparams.location +'&format=json&language='+msg.twcparams.lang+'&units='+msg.twcparams.units+'&apiKey='+apiKey)
+      request('https://api.weather.com/v3/wx/forecast/daily/'+msg.twcparams.range+'?'+ msg.twcparams.locationtype + '='+ msg.twcparams.location +'&format=json&language='+msg.twcparams.lang+'&units='+msg.twcparams.units+'&apiKey='+apiKey)
         .then(function (response) {
           msg.payload = JSON.parse(response);
           node.send(msg);
@@ -57,5 +64,5 @@ module.exports = function(RED) {
         });
     });
   }
-  RED.nodes.registerType("pws-forecast",weatherPWS5DayForecastNode);
+  RED.nodes.registerType("twc-daily-forecast",weatherTWCDailyForecastNode);
 }

@@ -91,13 +91,17 @@
 for more information about the <strong>The Weather Company APIs for Personal Weather Stations</strong>.</p>
   <h3>Inputs:</h3>
   <dl class="message-properties">
-    <dt class="optional">StationID <span class="property-type">string</span></dt>
+    <dt class="optional">msg.twcparams.StationID <span class="property-type">string</span></dt>
     <dd>If specified, override edit panel. Station ID as registered by wunderground.com</dd>
+    <dt class="optional">msg.twcparams.units <span class="property-type">string</span></dt>
+    <dd>If specified, override edit panel. 'e' - English units, 'm' - Metric units, 'h' - Hybrid units</dd>
   </dl>
   <h3>Outputs:</h3>
-  <h4><strong>msg.payload.observations</strong></h4>
-  <ul>
-    <li>Array of json objects containing data elements</li>
-    <li>Find details on the <a target="_blank" href="https://ibm.co/v2PWSCC">PWS Observations Current Conditions</a> data elements and definitions.</li>
-  </ul>
+  <dl class="message-properties">
+    <dt class="optional">msg.payload.observations <span class="property-type">object</span></dt>
+    <dd>Array of json objects containing weather data elements</dd>
+    <dd>Find details on the <a target="_blank" href="https://ibm.co/v2PWSCC">PWS Observations Current Conditions</a> data elements and definitions.</dd>
+    <dt class="optional">msg.twcparams <span class="property-type">object</span></dt>
+    <dd>Array of json objects containing request parameters</dd>
+  </dl>
 </script>

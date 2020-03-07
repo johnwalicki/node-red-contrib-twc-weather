@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-twc-weather",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Node-RED nodes for The Weather Company and Weather Underground Data APIs",
   "main": "pws-current.js",
   "scripts": {
@@ -30,7 +30,8 @@
       "pws-historical": "pws-historical.js",
       "pws-forecast": "pws-forecast.js",
       "pws-recent": "pws-recent.js",
-      "twc-health": "twc-health.js"
+      "twc-health": "twc-health.js",
+      "twc-core": "twc-core.js"
     }
   },
   "dependencies": {

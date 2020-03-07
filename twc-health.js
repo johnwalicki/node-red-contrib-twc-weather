@@ -21,7 +21,29 @@ module.exports = function(RED) {
     }
 
     node.on('input', function (msg) {
-      request('https://api.weather.com/v3/wx/forecast/daily/'+range+'/cognitiveHealth?'+ locationtype + '='+ location +'&conditionType='+conditiontype+'&format=json&language='+lang+'&apiKey='+apiKey)
+      msg.twcparams = msg.twcparams || {};
+
+      if( typeof msg.twcparams.range == 'undefined' ) {
+        msg.twcparams.range = range;
+      }
+
+      if( typeof msg.twcparams.conditiontype == 'undefined' ) {
+        msg.twcparams.conditiontype = conditiontype;
+      }
+
+      if( typeof msg.twcparams.lang == 'undefined' ) {
+        msg.twcparams.lang = lang;
+      }
+
+      if( typeof msg.twcparams.location == 'undefined' ) {
+        msg.twcparams.location = location;
+      }
+
+      if( typeof msg.twcparams.locationtype == 'undefined' ) {
+        msg.twcparams.locationtype = locationtype;
+      }
+
+      request('https://api.weather.com/v3/wx/forecast/daily/'+msg.twcparams.range+'/cognitiveHealth?'+ msg.twcparams.locationtype + '='+ msg.twcparams.location +'&conditionType='+msg.twcparams.conditiontype+'&format=json&language='+msg.twcparams.lang+'&apiKey='+apiKey)
         .then(function (response) {
           msg.payload = JSON.parse(response);
           node.send(msg);

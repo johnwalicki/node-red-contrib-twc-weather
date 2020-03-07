@@ -31,7 +31,10 @@ This Node-RED package creates six PWS nodes in your Node-RED palette.
 - **pws 1 day all** - Personal Weather Station (PWS) Rapid Historical Observations returns all of the observations records for a specific date.
 
 This Node-RED package creates TWC nodes in your Node-RED palette.
+- **TWC Daily Forecast** - (3, 5, 7, 10, 15 Day) Daily Forecast API from the TWC Core Weather Data Package.
 - **TWC Health Forecast** - The Cognitive Health Forecast API provides forecast data for the risk of allergy, migraine, cold and flu, or pain for a given location and for a period of one to 15 days in advance.
+
+Review the [CHANGELOG](/CHANGELOG.md) for enhancement history.
 
 ## Examples
 

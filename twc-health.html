@@ -75,12 +75,33 @@
   <p>Use of this node requires a purchased <a href="https://business.weather.com/resource/lifestyle-indices-data-package-brochure" target="_new">TWC Lifestyle Indices Weather data package</a><br />
   <p>See the <a target="_blank" href="https://docs.google.com/document/d/1njmJFG8aBEmxTsbYiTJV6m8nCJbR1JOaiNyy2xFbRQE">online documentation</a>
 for more information about the <strong>The Weather Company APIs for Cognitive Health Forecast</strong>.</p>
-  <h3>Output:</h3>
-  <h4><strong>msg.payload</strong></h4>
-  <ul>
-    <li>json object containing forecast data elements</li>
-    <li>riskLevel:<br /> 0 = very low risk<br /> 1 = low risk<br /> 2 = medium risk<br /> 3 = high risk<br /> 4 = very high risk</li>
-    <li>expirationTimeUtc: Time the riskLevel prediction becomes outdated</li>
-    <li>validTimeUtc: Time the riskLevel prediction was generated in epoch format</li>
-  </ul>
+  <dl class="message-properties">
+    <dt class="optional">msg.twcparams.locationtype <span class="property-type">string</span></dt>
+    <dd>If specified, override edit panel.</dd>
+    <dd>"geocode" - Request by Geocode</dd>
+    <dd>"iataCode" - Request by IATA Airport Code</dd>
+    <dd>"icaoCode" - Request by ICAO Airport Code</dd>
+    <dd>"placeid" - Request by Place ID</dd>
+    <dd>"postalKey" - Request by Postal Key</dd>
+    <dt class="optional">msg.twcparams.location <span class="property-type">string</span></dt>
+    <dd>If specified, override edit panel. See examples in the above documentation for geocodes, IATA/ICAO airport codes, Place ID and Postal Keys</dd>
+    <dt class="optional">msg.twcparams.lang <span class="property-type">string</span></dt>
+    <dd>If specified, override edit panel. ISO 639-1 standard language codes</dd>
+    <dt class="optional">msg.twcparams.units <span class="property-type">string</span></dt>
+    <dd>If specified, override edit panel. 'e' - English units, 'm' - Metric units, 'h' - Hybrid units</dd>
+    <dt class="optional">msg.twcparams.range <span class="property-type">string</span></dt>
+    <dd>If specified, override edit panel. '1day', '3day', '5day', '7day', '15day'</dd>
+    <dt class="optional">msg.twcparams.conditiontype <span class="property-type">string</span></dt>
+    <dd>If specified, override edit panel. 'allergies', 'migraine', 'coldAndFlu', 'pain', 'all'</dd>
+  </dl>
+  <h3>Outputs:</h3>
+  <dl class="message-properties">
+    <dt class="optional">msg.payload <span class="property-type">object</span></dt>
+    <dd>Array of json objects containing forecast data elements</dd>
+    <dd>riskLevel:<br /> 0 = very low risk<br /> 1 = low risk<br /> 2 = medium risk<br /> 3 = high risk<br /> 4 = very high risk</dd>
+    <dd>expirationTimeUtc: Time the riskLevel prediction becomes outdated</dd>
+    <dd>validTimeUtc: Time the riskLevel prediction was generated in epoch format</dd>
+    <dt class="optional">msg.twcparams <span class="property-type">object</span></dt>
+    <dd>Array of json objects containing request parameters</dd>
+  </dl>
 </script>
