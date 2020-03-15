@@ -1,5 +1,7 @@
 #### Change Log for node-red-contrib-twc-weather
-
+- v0.3.1
+  - fix StationID bug in 7 Day recent history nodes
+  - Better Weather Dashboard example
 - v0.3.0
   - msg.twcparams input override values for all query parameters for the PWS/TWC nodes
   - Return  msg.twcparams object with the query params so that they can be used downstream in the flow for possible display on a dashboard.

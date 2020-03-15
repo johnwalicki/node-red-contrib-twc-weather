@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-twc-weather",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Node-RED nodes for The Weather Company and Weather Underground Data APIs",
   "main": "pws-current.js",
   "scripts": {

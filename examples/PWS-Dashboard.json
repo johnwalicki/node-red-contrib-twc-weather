@@ -34,7 +34,8 @@
         "wires": [
             [
                 "d2d665ce.c48898",
-                "73e52992.bb7fd8"
+                "b7babaaf.bb0448",
+                "b3dc9bd1.1c29f"
             ]
         ]
     },
@@ -48,7 +49,7 @@
         "date": "",
         "range": "daily",
         "apikey": "ba693fed.4c01f8",
-        "x": 540,
+        "x": 520,
         "y": 540,
         "wires": [
             [
@@ -66,7 +67,7 @@
         "console": false,
         "tostatus": false,
         "complete": "false",
-        "x": 990,
+        "x": 970,
         "y": 500,
         "wires": []
     },
@@ -100,11 +101,13 @@
         "location": "07450:US",
         "lang": "en-US",
         "apikey": "ba693fed.4c01f8",
-        "x": 580,
-        "y": 240,
+        "x": 400,
+        "y": 660,
         "wires": [
             [
-                "ef83ba6e.c8424"
+                "5c5bc36.005563c",
+                "fec4e447.6fa4d8",
+                "77f061a6.a3dd7"
             ]
         ]
     },
@@ -115,7 +118,7 @@
         "name": "5 Day Forecast",
         "info": "",
         "x": 120,
-        "y": 200,
+        "y": 620,
         "wires": []
     },
     {
@@ -125,7 +128,7 @@
         "name": "Recent PWS Observations",
         "info": "",
         "x": 150,
-        "y": 380,
+        "y": 320,
         "wires": []
     },
     {
@@ -138,26 +141,9 @@
         "console": false,
         "tostatus": false,
         "complete": "false",
-        "x": 850,
-        "y": 380,
+        "x": 870,
+        "y": 360,
         "wires": []
-    },
-    {
-        "id": "795c58a0.25b13",
-        "type": "pws-7day-hourly",
-        "z": "282fafd4.df968",
-        "name": "",
-        "stationid": "",
-        "units": "e",
-        "apikey": "ba693fed.4c01f8",
-        "x": 410,
-        "y": 420,
-        "wires": [
-            [
-                "9f3b16b0.6f231",
-                "cf262cff.8843e"
-            ]
-        ]
     },
     {
         "id": "cf262cff.8843e",
@@ -168,9 +154,10 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "true",
+        "targetType": "full",
         "x": 610,
-        "y": 380,
+        "y": 360,
         "wires": []
     },
     {
@@ -179,7 +166,7 @@
         "z": "282fafd4.df968",
         "name": "",
         "label": "Enter StationID",
-        "tooltip": "Eg KNJRIDGE24",
+        "tooltip": "",
         "group": "a91cd93c.4ca95",
         "order": 1,
         "width": 0,
@@ -253,11 +240,18 @@
         "id": "6e439dd2.a9fbc4",
         "type": "change",
         "z": "282fafd4.df968",
-        "name": "",
+        "name": "Set twcparams",
         "rules": [
             {
                 "t": "set",
-                "p": "StationID",
+                "p": "twcparams",
+                "pt": "msg",
+                "to": "{}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "twcparams.StationID",
                 "pt": "msg",
                 "to": "StationID",
                 "tot": "flow"
@@ -268,46 +262,11 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 390,
+        "x": 380,
         "y": 140,
         "wires": [
             [
                 "36df2040.dab0e8"
-            ]
-        ]
-    },
-    {
-        "id": "8ac2d6c4.119228",
-        "type": "ui_template",
-        "z": "282fafd4.df968",
-        "group": "ada0ce32.b103c",
-        "name": "",
-        "order": 1,
-        "width": "12",
-        "height": "4",
-        "format": "<div ng-bind-html=\"msg.payload\"></div>",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "templateScope": "local",
-        "x": 980,
-        "y": 140,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "73e52992.bb7fd8",
-        "type": "function",
-        "z": "282fafd4.df968",
-        "name": "All Records",
-        "func": "if( typeof(msg.payload.observations[0]) == 'undefined') {\n    return null;\n}\n\nmsg.template = \"\";\nfor (const [key, value] of Object.entries(msg.payload.observations[0])) {\n  msg.template = msg.template + key + \":\" + value +\"<br>\";\n}\n\nvar weather = {};\nif( typeof( msg.payload.observations[0].metric) != 'undefined') {\n    weather = msg.payload.observations[0].metric;\n} else if( typeof( msg.payload.observations[0].imperial) != 'undefined') {\n    weather = msg.payload.observations[0].imperial;\n} else if( typeof( msg.payload.observations[0].uk_hybrid) != 'undefined') {\n    weather = msg.payload.observations[0].uk_hybrid;\n}    \n   \n\nfor (const [key, value] of Object.entries(weather)) {\n  console.log(key, value);\n  msg.template = msg.template + key + \":\" + value +\"<br>\";\n}\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 810,
-        "y": 140,
-        "wires": [
-            [
-                "8ac2d6c4.119228"
             ]
         ]
     },
@@ -330,8 +289,8 @@
         "type": "ui_button",
         "z": "282fafd4.df968",
         "name": "",
-        "group": "a91cd93c.4ca95",
-        "order": 4,
+        "group": "1bba4345.fa4d15",
+        "order": 1,
         "width": 0,
         "height": 0,
         "passthru": false,
@@ -344,7 +303,7 @@
         "payloadType": "str",
         "topic": "",
         "x": 120,
-        "y": 240,
+        "y": 660,
         "wires": [
             [
                 "27c10673.26a442"
@@ -352,28 +311,12 @@
         ]
     },
     {
-        "id": "ef83ba6e.c8424",
-        "type": "ui_text",
-        "z": "282fafd4.df968",
-        "group": "ada0ce32.b103c",
-        "order": 2,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "Forecast",
-        "format": "{{msg.payload.narrative[0]}}",
-        "layout": "row-spread",
-        "x": 800,
-        "y": 240,
-        "wires": []
-    },
-    {
         "id": "7af5ad2e.7e20ec",
         "type": "ui_button",
         "z": "282fafd4.df968",
         "name": "",
         "group": "a91cd93c.4ca95",
-        "order": 6,
+        "order": 7,
         "width": 0,
         "height": 0,
         "passthru": false,
@@ -386,10 +329,10 @@
         "payloadType": "str",
         "topic": "",
         "x": 160,
-        "y": 420,
+        "y": 360,
         "wires": [
             [
-                "795c58a0.25b13"
+                "3cc00f08.79528"
             ]
         ]
     },
@@ -398,11 +341,11 @@
         "type": "function",
         "z": "282fafd4.df968",
         "name": "Get HourlyAvgTemp",
-        "func": "if( typeof( msg.payload.observations[0]) == 'undefined') {\n    return null;\n}\n\nvar HourlyAvgTempChart = [{\n    \"series\":[\"7 Day Hourly Summary\"],\n    \"data\":[[]],\n    \"labels\":[\"Hourly Avg Temp\"]\n}];\n\n\nfor( var i=0; i < msg.payload.observations.length; i++) {\n    AvgTemp = {\"x\":msg.payload.observations[i].epoch,\"y\":msg.payload.observations[i].imperial.tempAvg}\n    HourlyAvgTempChart[0].data[0].push(AvgTemp) ;\n}\n\nmsg.payload = HourlyAvgTempChart;\nreturn msg;",
+        "func": "if( typeof( msg.payload.observations) == 'undefined') {\n    return null;\n}\n\nvar HourlyAvgTempChart = [{\n    \"series\":[\"7 Day Hourly Summary\"],\n    \"data\":[[]],\n    \"labels\":[\"Hourly Avg Temp\"]\n}];\n\n\nfor( var i=0; i < msg.payload.observations.length; i++) {\n    AvgTemp = {\"x\":msg.payload.observations[i].epoch,\"y\":msg.payload.observations[i].imperial.tempAvg};\n    HourlyAvgTempChart[0].data[0].push(AvgTemp) ;\n}\n\nmsg.payload = HourlyAvgTempChart;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 640,
-        "y": 420,
+        "x": 660,
+        "y": 400,
         "wires": [
             [
                 "95f6a021.aa9ba8",
@@ -427,7 +370,7 @@
         "nodata": "",
         "dot": false,
         "ymin": "0",
-        "ymax": "50",
+        "ymax": "100",
         "removeOlder": 1,
         "removeOlderPoints": "",
         "removeOlderUnit": "3600",
@@ -446,8 +389,8 @@
         ],
         "useOldStyle": false,
         "outputs": 1,
-        "x": 900,
-        "y": 420,
+        "x": 920,
+        "y": 400,
         "wires": [
             []
         ]
@@ -459,7 +402,7 @@
         "name": "",
         "label": "Historical Date",
         "group": "a91cd93c.4ca95",
-        "order": 8,
+        "order": 4,
         "width": 0,
         "height": 0,
         "passthru": true,
@@ -476,14 +419,28 @@
         "id": "7890ac05.5252bc",
         "type": "change",
         "z": "282fafd4.df968",
-        "name": "",
+        "name": "Set twcparams",
         "rules": [
             {
                 "t": "set",
-                "p": "date",
+                "p": "twcparams",
+                "pt": "msg",
+                "to": "{}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "twcparams.date",
                 "pt": "msg",
                 "to": "payload",
                 "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "twcparams.StationID",
+                "pt": "msg",
+                "to": "StationID",
+                "tot": "flow"
             }
         ],
         "action": "",
@@ -491,7 +448,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 330,
+        "x": 320,
         "y": 540,
         "wires": [
             [
@@ -511,7 +468,7 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 510,
+        "x": 490,
         "y": 500,
         "wires": []
     },
@@ -534,7 +491,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 770,
+        "x": 750,
         "y": 540,
         "wires": [
             [
@@ -548,8 +505,8 @@
         "type": "ui_gauge",
         "z": "282fafd4.df968",
         "name": "",
-        "group": "ada0ce32.b103c",
-        "order": 7,
+        "group": "a91cd93c.4ca95",
+        "order": 5,
         "width": 0,
         "height": 0,
         "gtype": "gage",
@@ -565,9 +522,654 @@
         ],
         "seg1": "",
         "seg2": "",
-        "x": 1030,
+        "x": 1010,
         "y": 540,
         "wires": []
+    },
+    {
+        "id": "e5d07e30.329da",
+        "type": "inject",
+        "z": "282fafd4.df968",
+        "name": "Hourly refresh",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "3600",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 120,
+        "y": 700,
+        "wires": [
+            [
+                "27c10673.26a442"
+            ]
+        ]
+    },
+    {
+        "id": "5c5bc36.005563c",
+        "type": "function",
+        "z": "282fafd4.df968",
+        "name": "Narrative",
+        "func": "var Days = [];\nvar MyForecastStr;\nfor( var i=0; i < msg.payload.dayOfWeek.length; i++) {\n    MyForecastStr = msg.payload.dayOfWeek[i] +\" : \"+msg.payload.narrative[i];\n    Days.push(MyForecastStr)\n}\n\nreturn [{\"payload\":Days[0]},\n        {\"payload\":Days[1]},\n        {\"payload\":Days[2]},\n        {\"payload\":Days[3]},\n        {\"payload\":Days[4]},\n        {\"payload\":Days[5]}];",
+        "outputs": 6,
+        "noerr": 0,
+        "x": 300,
+        "y": 760,
+        "wires": [
+            [
+                "d2b0178b.fa37e8",
+                "c6f84647.c727"
+            ],
+            [
+                "d2b0178b.fa37e8",
+                "38c5e3a2.2f759c"
+            ],
+            [
+                "d2b0178b.fa37e8",
+                "e6eeebc9.faf3d"
+            ],
+            [
+                "d2b0178b.fa37e8",
+                "6061525a.e3fe14"
+            ],
+            [
+                "d2b0178b.fa37e8",
+                "54c87a53.d9ec64"
+            ],
+            [
+                "d2b0178b.fa37e8",
+                "2035f1f6.a56dbe"
+            ]
+        ]
+    },
+    {
+        "id": "fec4e447.6fa4d8",
+        "type": "debug",
+        "z": "282fafd4.df968",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 690,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "d2b0178b.fa37e8",
+        "type": "debug",
+        "z": "282fafd4.df968",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 530,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "c6f84647.c727",
+        "type": "ui_text",
+        "z": "282fafd4.df968",
+        "group": "1bba4345.fa4d15",
+        "order": 3,
+        "width": "6",
+        "height": "2",
+        "name": "",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "x": 510,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "38c5e3a2.2f759c",
+        "type": "ui_text",
+        "z": "282fafd4.df968",
+        "group": "1bba4345.fa4d15",
+        "order": 5,
+        "width": "6",
+        "height": "2",
+        "name": "",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "x": 510,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "e6eeebc9.faf3d",
+        "type": "ui_text",
+        "z": "282fafd4.df968",
+        "group": "1bba4345.fa4d15",
+        "order": 7,
+        "width": "6",
+        "height": "2",
+        "name": "",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "x": 510,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "6061525a.e3fe14",
+        "type": "ui_text",
+        "z": "282fafd4.df968",
+        "group": "1bba4345.fa4d15",
+        "order": 9,
+        "width": "6",
+        "height": "2",
+        "name": "",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "x": 510,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "54c87a53.d9ec64",
+        "type": "ui_text",
+        "z": "282fafd4.df968",
+        "group": "1bba4345.fa4d15",
+        "order": 11,
+        "width": "6",
+        "height": "2",
+        "name": "",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "x": 510,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "2035f1f6.a56dbe",
+        "type": "ui_text",
+        "z": "282fafd4.df968",
+        "group": "1bba4345.fa4d15",
+        "order": 13,
+        "width": "6",
+        "height": "2",
+        "name": "",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "x": 510,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "97fe9121.6dbc48",
+        "type": "inject",
+        "z": "282fafd4.df968",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 200,
+        "y": 400,
+        "wires": [
+            [
+                "3cc00f08.79528"
+            ]
+        ]
+    },
+    {
+        "id": "eb564a5d.b01118",
+        "type": "ui_template",
+        "z": "282fafd4.df968",
+        "group": "1bba4345.fa4d15",
+        "name": "Weather Icon Image1",
+        "order": 2,
+        "width": "2",
+        "height": "2",
+        "format": "<div style=\"display: flex;height: 100%;justify-content: center;align-items: center;\">\n<i class=\"fa-4x wi {{msg.payload}}\"></i>\n</div>",
+        "storeOutMessages": false,
+        "fwdInMessages": true,
+        "templateScope": "local",
+        "x": 1020,
+        "y": 720,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8d8a0f4c.d53668",
+        "type": "debug",
+        "z": "282fafd4.df968",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "payload",
+        "x": 990,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "77f061a6.a3dd7",
+        "type": "function",
+        "z": "282fafd4.df968",
+        "name": "Weather Icon",
+        "func": "// TWC forecast API suggests a Icon code to display with the narrative\n// Map the icon codes to Weather Lite icons. See\n// https://github.com/Paul-Reed/weather-icons-lite\nvar IconMapping=[ \"wi-darksky-tornado\", \"wi-hurricane\",\n\"wi-hurricane\",\"wi-owm-11d\",\"wi-owm-11d\",\n\"wi-wu-rain\",\"wi-wu-sleet\",\"wi-wu-sleet\",\"wi-wu-sleet\",\n\"wi-wu-rain\",\"wi-wu-chancesleet\",\"wi-wu-rain\",\"wi-wu-rain\",\n\"wi-wu-flurries\",\"wi-wu-flurries\",\"wi-wu-snow\",\"wi-wu-snow\",\n\"wi-wu-sleet\",\"wi-wu-sleet\",\"wi-sandstorm\",\"wi-wu-hazy\",\n\"wi-wu-hazy\",\"wi-wu-hazy\",\"wi-darksky-wind\",\"wi-darksky-wind\",\n\"wi-wu-sleet\",\"wi-wu-cloudy\",\"wi-wu-mostlycloudy\",\n\"wi-wu-mostlycloudy\",\"wi-wu-partlycloudy\",\"wi-wu-partlycloudy\",\n\"wi-wu-clear\",\"wi-wu-sunny\",\"wi-owm-02d\",\"wi-owm-02d\",\"wi-wu-rain\",\n\"wi-wu-sunny\",\"wi-wu-tstorm\",\"wi-wu-tstorm\",\"wi-wu-chancerain\",\n\"wi-owm-10d\",\"wi-wu-flurries\",\"wi-wu-snow\",\"wi-wu-snow\",\"wi-na\",\n\"wi-wu-chancerain\",\"wi-wu-snow\",\"wi-wu-tstorms\"];\n\n\nvar Icon=[];\nfor(i = 0; i<=msg.payload.daypart[0].iconCode.length; i+=2){\n    if( msg.payload.daypart[0].iconCode[i] !== null) {\n        Icon.push(IconMapping[msg.payload.daypart[0].iconCode[i]]);\n    } else {\n        // Evening half day? - use the alternate icon\n        Icon.push(IconMapping[msg.payload.daypart[0].iconCode[i+1]]);\n    }\n}\n\n//node.send({\"payload\":Icon})\nreturn [{\"payload\":Icon[0]},\n        {\"payload\":Icon[1]},\n        {\"payload\":Icon[2]},\n        {\"payload\":Icon[3]},\n        {\"payload\":Icon[4]},\n        {\"payload\":Icon[5]}];\n\n",
+        "outputs": 6,
+        "noerr": 0,
+        "x": 750,
+        "y": 760,
+        "wires": [
+            [
+                "8d8a0f4c.d53668",
+                "eb564a5d.b01118"
+            ],
+            [
+                "8d8a0f4c.d53668",
+                "71761249.14ae4c"
+            ],
+            [
+                "8d8a0f4c.d53668",
+                "e9c1cf4f.1efb3"
+            ],
+            [
+                "8d8a0f4c.d53668",
+                "95fe10b6.103008"
+            ],
+            [
+                "8d8a0f4c.d53668",
+                "159f2e1d.f12802"
+            ],
+            [
+                "8d8a0f4c.d53668",
+                "1c28ad07.583053"
+            ]
+        ]
+    },
+    {
+        "id": "71761249.14ae4c",
+        "type": "ui_template",
+        "z": "282fafd4.df968",
+        "group": "1bba4345.fa4d15",
+        "name": "Weather Icon Image2",
+        "order": 4,
+        "width": "2",
+        "height": "2",
+        "format": "<div style=\"display: flex;height: 100%;justify-content: center;align-items: center;\">\n<i class=\"fa-4x wi {{msg.payload}}\"></i>\n</div>",
+        "storeOutMessages": false,
+        "fwdInMessages": true,
+        "templateScope": "local",
+        "x": 1020,
+        "y": 760,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e9c1cf4f.1efb3",
+        "type": "ui_template",
+        "z": "282fafd4.df968",
+        "group": "1bba4345.fa4d15",
+        "name": "Weather Icon Image3",
+        "order": 6,
+        "width": "2",
+        "height": "2",
+        "format": "<div style=\"display: flex;height: 100%;justify-content: center;align-items: center;\">\n<i class=\"fa-4x wi {{msg.payload}}\"></i>\n</div>",
+        "storeOutMessages": false,
+        "fwdInMessages": true,
+        "templateScope": "local",
+        "x": 1020,
+        "y": 800,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "95fe10b6.103008",
+        "type": "ui_template",
+        "z": "282fafd4.df968",
+        "group": "1bba4345.fa4d15",
+        "name": "Weather Icon Image4",
+        "order": 8,
+        "width": "2",
+        "height": "2",
+        "format": "<div style=\"display: flex;height: 100%;justify-content: center;align-items: center;\">\n<i class=\"fa-4x wi {{msg.payload}}\"></i>\n</div>",
+        "storeOutMessages": false,
+        "fwdInMessages": true,
+        "templateScope": "local",
+        "x": 1020,
+        "y": 840,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "159f2e1d.f12802",
+        "type": "ui_template",
+        "z": "282fafd4.df968",
+        "group": "1bba4345.fa4d15",
+        "name": "Weather Icon Image5",
+        "order": 10,
+        "width": "2",
+        "height": "2",
+        "format": "<div style=\"display: flex;height: 100%;justify-content: center;align-items: center;\">\n<i class=\"fa-4x wi {{msg.payload}}\"></i>\n</div>",
+        "storeOutMessages": false,
+        "fwdInMessages": true,
+        "templateScope": "local",
+        "x": 1020,
+        "y": 880,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1c28ad07.583053",
+        "type": "ui_template",
+        "z": "282fafd4.df968",
+        "group": "1bba4345.fa4d15",
+        "name": "Weather Icon Image6",
+        "order": 12,
+        "width": "2",
+        "height": "2",
+        "format": "<div style=\"display: flex;height: 100%;justify-content: center;align-items: center;\">\n<i class=\"fa-4x wi {{msg.payload}}\"></i>\n</div>",
+        "storeOutMessages": false,
+        "fwdInMessages": true,
+        "templateScope": "local",
+        "x": 1020,
+        "y": 920,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e4380e97.48866",
+        "type": "pws-7day-hourly",
+        "z": "282fafd4.df968",
+        "name": "",
+        "stationid": "",
+        "units": "e",
+        "apikey": "ba693fed.4c01f8",
+        "x": 430,
+        "y": 400,
+        "wires": [
+            [
+                "cf262cff.8843e",
+                "9f3b16b0.6f231"
+            ]
+        ]
+    },
+    {
+        "id": "3cc00f08.79528",
+        "type": "change",
+        "z": "282fafd4.df968",
+        "name": "Set twcparams",
+        "rules": [
+            {
+                "t": "set",
+                "p": "twcparams",
+                "pt": "msg",
+                "to": "{}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "twcparams.StationID",
+                "pt": "msg",
+                "to": "StationID",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 400,
+        "y": 360,
+        "wires": [
+            [
+                "e4380e97.48866"
+            ]
+        ]
+    },
+    {
+        "id": "7bbfbf86.8f9658",
+        "type": "comment",
+        "z": "282fafd4.df968",
+        "name": "One time - Add Map to Dashboard",
+        "info": "",
+        "x": 180,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "79b761e2.440c78",
+        "type": "inject",
+        "z": "282fafd4.df968",
+        "name": "Init WorldMap",
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "x": 230,
+        "y": 260,
+        "wires": [
+            [
+                "982eedd1.509c58",
+                "8285c7b2.4d23b8"
+            ]
+        ]
+    },
+    {
+        "id": "d54f125f.e6a1a",
+        "type": "ui_template",
+        "z": "282fafd4.df968",
+        "group": "ada0ce32.b103c",
+        "name": "Embedded Map",
+        "order": 1,
+        "width": "12",
+        "height": "8",
+        "format": "<div ng-bind-html=\"msg.payload | trusted\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "templateScope": "local",
+        "x": 660,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b1cccbd5.a704d8",
+        "type": "worldmap",
+        "z": "282fafd4.df968",
+        "name": "",
+        "lat": "",
+        "lon": "",
+        "zoom": "",
+        "layer": "",
+        "cluster": "",
+        "maxage": "",
+        "usermenu": "show",
+        "layers": "show",
+        "panit": "false",
+        "panlock": "false",
+        "zoomlock": "false",
+        "hiderightclick": "false",
+        "coords": "none",
+        "path": "/weathermap",
+        "x": 990,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "c6e23e3.7c6be4",
+        "type": "change",
+        "z": "282fafd4.df968",
+        "name": "Default map",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"command\":{\"layer\":\"OSM\",\"lat\":41.2417,\"lon\":-99.3829,\"zoom\":4,\"addtoheatmap\":true,\"autopan\":true,\"clear\":\"OSM\",\"map\":{\"name\":\"OSM\",\"url\":\"http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png\",\"opt\":{\"MaxZoom\":18,\"attribution\":\"&copy; OpenStreetMap\"}}}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 650,
+        "y": 220,
+        "wires": [
+            [
+                "b1cccbd5.a704d8"
+            ]
+        ]
+    },
+    {
+        "id": "982eedd1.509c58",
+        "type": "delay",
+        "z": "282fafd4.df968",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 420,
+        "y": 220,
+        "wires": [
+            [
+                "c6e23e3.7c6be4"
+            ]
+        ]
+    },
+    {
+        "id": "b7babaaf.bb0448",
+        "type": "function",
+        "z": "282fafd4.df968",
+        "name": "Plot on Map",
+        "func": "if( typeof(msg.payload.observations) == 'undefined') {\n    return null;\n}\n\nvar weather = {};\nif( typeof( msg.payload.observations[0].metric) != 'undefined') {\n    weather = msg.payload.observations[0].metric;\n    delete msg.payload.observations[0].metric\n} else if( typeof( msg.payload.observations[0].imperial) != 'undefined') {\n    weather = msg.payload.observations[0].imperial;\n    delete msg.payload.observations[0].imperial\n} else if( typeof( msg.payload.observations[0].uk_hybrid) != 'undefined') {\n    weather = msg.payload.observations[0].uk_hybrid;\n    delete msg.payload.observations[0].uk_hybrid\n}\nfor (const [key, value] of Object.entries(weather)) {\n    // Move the key/value pairs up so they appear nicely in the marker popup\n    msg.payload[key]=value;\n}\n\nfor (const [key, value] of Object.entries(msg.payload.observations[0])) {\n    // Move the key/value pairs up so they appear nicely in the marker popup\n    msg.payload[key]=value;\n}\ndelete msg.payload.observations;\n\n\nmsg.payload.name = msg.twcparams.StationID;\nmsg.payload.icon = \"globe\";\nif( msg.payload.temp > 60 ) {\n    msg.payload.iconColor = \"red\";\n} else {\n    msg.payload.iconColor = \"orange\";\n}\n\nmsg.payload.command = { zoom:6, \n                            \"lat\":msg.payload.lat,\n                            \"lon\":msg.payload.lon,\n                            autopan:true };\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 810,
+        "y": 180,
+        "wires": [
+            [
+                "b1cccbd5.a704d8"
+            ]
+        ]
+    },
+    {
+        "id": "8285c7b2.4d23b8",
+        "type": "change",
+        "z": "282fafd4.df968",
+        "name": "Inject /weathermap",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "<iframe src=\"/weathermap\" height=412px width=624px ></iframe>",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 450,
+        "y": 260,
+        "wires": [
+            [
+                "d54f125f.e6a1a"
+            ]
+        ]
+    },
+    {
+        "id": "a74bb8bb.139fc8",
+        "type": "ui_table",
+        "z": "282fafd4.df968",
+        "group": "ada0ce32.b103c",
+        "name": "",
+        "order": 3,
+        "width": "12",
+        "height": "4",
+        "columns": [
+            {
+                "field": "observations",
+                "title": "Observations",
+                "width": "50%",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "results",
+                "title": "Results",
+                "width": "48%",
+                "align": "right",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            }
+        ],
+        "outputs": 0,
+        "cts": false,
+        "x": 970,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "b3dc9bd1.1c29f",
+        "type": "function",
+        "z": "282fafd4.df968",
+        "name": "Build Table",
+        "func": "if( typeof(msg.payload.observations) == 'undefined') {\n    return null;\n}\n\nvar TableArray = [];\nfor (const [key, value] of Object.entries(msg.payload.observations[0])) {\n  var TableEntry = {};\n  TableEntry.observations = key ;\n  TableEntry.results = value ;\n  TableArray.push( TableEntry );\n}\n\nvar weather = {};\nif( typeof( msg.payload.observations[0].metric) != 'undefined') {\n    weather = msg.payload.observations[0].metric;\n} else if( typeof( msg.payload.observations[0].imperial) != 'undefined') {\n    weather = msg.payload.observations[0].imperial;\n} else if( typeof( msg.payload.observations[0].uk_hybrid) != 'undefined') {\n    weather = msg.payload.observations[0].uk_hybrid;\n}    \n   \nfor (const [key, value] of Object.entries(weather)) {\n    var TableEntry = {};\n    TableEntry.observations = key ;\n    TableEntry.results = value ;\n    TableArray.push( TableEntry );\n}\n\nmsg.payload = TableArray;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 810,
+        "y": 140,
+        "wires": [
+            [
+                "a74bb8bb.139fc8"
+            ]
+        ]
+    },
+    {
+        "id": "ba693fed.4c01f8",
+        "type": "pwsapikey",
+        "z": "",
+        "name": ""
     },
     {
         "id": "a91cd93c.4ca95",
@@ -578,6 +1180,17 @@
         "order": 1,
         "disp": true,
         "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "1bba4345.fa4d15",
+        "type": "ui_group",
+        "z": "",
+        "name": "Forecast",
+        "tab": "a105e68a.f1f57",
+        "order": 3,
+        "disp": true,
+        "width": "8",
         "collapse": false
     },
     {

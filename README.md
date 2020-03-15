@@ -34,17 +34,17 @@ This Node-RED package creates TWC nodes in your Node-RED palette.
 - **TWC Daily Forecast** - (3, 5, 7, 10, 15 Day) Daily Forecast API from the TWC Core Weather Data Package.
 - **TWC Health Forecast** - The Cognitive Health Forecast API provides forecast data for the risk of allergy, migraine, cold and flu, or pain for a given location and for a period of one to 15 days in advance.
 
-Review the [CHANGELOG](/CHANGELOG.md) for enhancement history.
+Review the [CHANGELOG](https://github.com/johnwalicki/node-red-contrib-twc-weather/blob/master/CHANGELOG.md) for enhancement history.
 
 ## Examples
 
-Two examples are provided in the [examples](/examples) folder.
+Two examples are provided in the [examples](https://github.com/johnwalicki/node-red-contrib-twc-weather/tree/master/examples) folder.
 
-- Exercise each of the Node-RED PWS APIs by importing this [PWS-Examples.json flow](/examples/PWS-Examples.json)
+- Exercise each of the Node-RED PWS APIs by importing this [PWS-Examples.json flow](https://github.com/johnwalicki/node-red-contrib-twc-weather/blob/master/examples/PWS-Examples.json)
 
 ![PWS Examples](PWS-Examples.png)
 
-- Rudimentary Node-RED Dashboard that displays some PWS data. Import this [PWS-Dashboard.json flow](/examples/PWS-Dashboard.json)
+- Here is an example Weather Node-RED Dashboard that displays Personal Weather Station current and historical data on a map, in a table, a gauge and on a chart. The PWS API key includes access to the TWC 5 Day Forecast, which is displayed with [weather-lite icons](https://github.com/Paul-Reed/weather-icons-lite). This flow requires node-red-dashboard, node-red-node-ui-table and node-red-contrib-web-worldmap.  Import this [PWS-Dashboard.json flow](https://github.com/johnwalicki/node-red-contrib-twc-weather/blob/master/examples/PWS-Dashboard.json)
 
 ![PWS Dashboard](PWS-Dashboard.png)
 

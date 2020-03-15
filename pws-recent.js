@@ -20,13 +20,11 @@ module.exports = function(RED) {
     node.on('input', function (msg) {
       msg.twcparams = msg.twcparams || {};
 
-      if( typeof msg.twcparams.units != 'undefined' ) {
-        if( "emhEMH".indexOf(msg.twcparams.units) >= 0 ) {
-          // passed in param is valid, override
-          msg.twcparams.units = msg.twcparams.units.toLowerCase();
-        } else {
-          msg.twcparams.units = units; // take the default or the node setting
-        }
+      if( typeof msg.twcparams.units == 'undefined' ) {
+        msg.twcparams.units = units; // take the default or the node setting
+      } else if( "emhEMH".indexOf(msg.twcparams.units) >= 0 ) {
+        // passed in param is valid, override default or node setting
+        msg.twcparams.units = msg.twcparams.units.toLowerCase();
       } else {
         msg.twcparams.units = units; // take the default or the node setting
       }
@@ -42,7 +40,7 @@ module.exports = function(RED) {
       } else {
         msg.twcparams.StationID = curStationId;
 
-        request('https://api.weather.com/v2/pws/dailysummary/7day?stationId=' + msg.twcparams.StationId +'&format=json&units='+msg.twcparams.units+'&apiKey='+apiKey)
+        request('https://api.weather.com/v2/pws/dailysummary/7day?stationId=' + msg.twcparams.StationID +'&format=json&units='+msg.twcparams.units+'&apiKey='+apiKey)
           .then(function (response) {
               msg.payload = JSON.parse(response);
               node.send(msg);
@@ -77,13 +75,11 @@ module.exports = function(RED) {
     node.on('input', function (msg) {
       msg.twcparams = msg.twcparams || {};
 
-      if( typeof msg.twcparams.units != 'undefined' ) {
-        if( "emhEMH".indexOf(msg.twcparams.units) >= 0 ) {
-          // passed in param is valid, override
-          msg.twcparams.units = msg.twcparams.units.toLowerCase();
-        } else {
-          msg.twcparams.units = units; // take the default or the node setting
-        }
+      if( typeof msg.twcparams.units == 'undefined' ) {
+        msg.twcparams.units = units; // take the default or the node setting
+      } else if( "emhEMH".indexOf(msg.twcparams.units) >= 0 ) {
+        // passed in param is valid, override default or node setting
+        msg.twcparams.units = msg.twcparams.units.toLowerCase();
       } else {
         msg.twcparams.units = units; // take the default or the node setting
       }
@@ -99,7 +95,7 @@ module.exports = function(RED) {
       } else {
         msg.twcparams.StationID = curStationId;
 
-        request('https://api.weather.com/v2/pws/observations/hourly/7day?stationId=' + msg.twcparams.StationId +'&format=json&units='+msg.twcparams.units+'&apiKey='+apiKey)
+        request('https://api.weather.com/v2/pws/observations/hourly/7day?stationId=' + msg.twcparams.StationID +'&format=json&units='+msg.twcparams.units+'&apiKey='+apiKey)
           .then(function (response) {
               msg.payload = JSON.parse(response);
               node.send(msg);
@@ -134,13 +130,11 @@ module.exports = function(RED) {
     node.on('input', function (msg) {
       msg.twcparams = msg.twcparams || {};
 
-      if( typeof msg.twcparams.units != 'undefined' ) {
-        if( "emhEMH".indexOf(msg.twcparams.units) >= 0 ) {
-          // passed in param is valid, override
-          msg.twcparams.units = msg.twcparams.units.toLowerCase();
-        } else {
-          msg.twcparams.units = units; // take the default or the node setting
-        }
+      if( typeof msg.twcparams.units == 'undefined' ) {
+        msg.twcparams.units = units; // take the default or the node setting
+      } else if( "emhEMH".indexOf(msg.twcparams.units) >= 0 ) {
+        // passed in param is valid, override default or node setting
+        msg.twcparams.units = msg.twcparams.units.toLowerCase();
       } else {
         msg.twcparams.units = units; // take the default or the node setting
       }
@@ -156,7 +150,7 @@ module.exports = function(RED) {
       } else {
         msg.twcparams.StationID = curStationId;
 
-        request('https://api.weather.com/v2/pws/observations/all/1day?stationId=' + msg.twcparams.StationId +'&format=json&units='+msg.twcparams.units+'&apiKey='+apiKey)
+        request('https://api.weather.com/v2/pws/observations/all/1day?stationId=' + msg.twcparams.StationID +'&format=json&units='+msg.twcparams.units+'&apiKey='+apiKey)
           .then(function (response) {
               msg.payload = JSON.parse(response);
               node.send(msg);
