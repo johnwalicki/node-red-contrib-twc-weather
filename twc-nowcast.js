@@ -1,5 +1,5 @@
 module.exports = function(RED) {
-  function weatherTWCDailyForecastNode( n ) {
+  function weather6HrNowCastNode( n ) {
     RED.nodes.createNode(this,n );
     var node = this;
     var units = n.units;
@@ -7,7 +7,6 @@ module.exports = function(RED) {
     var locationtype = n.locationtype;
     var location= n.location;
     var lang = n.lang;
-    var range = n.range;
     var pwsConfigNode;
     var apiKey;
     const axios = require('axios');
@@ -22,11 +21,9 @@ module.exports = function(RED) {
     if (!lang) {
       lang = 'en-US';
     }
-    if (!range) {
-      range = '5day';
-    }
 
     node.on('input', function (msg) {
+
       msg.twcparams = msg.twcparams || {};
 
       if( typeof msg.twcparams.units == 'undefined' ) {
@@ -42,10 +39,6 @@ module.exports = function(RED) {
         msg.twcparams.lang = lang;
       }
 
-      if( typeof msg.twcparams.range == 'undefined' ) {
-        msg.twcparams.range = range;
-      }
-
       if( typeof msg.twcparams.location == 'undefined' ) {
         msg.twcparams.location = location;
       }
@@ -54,9 +47,30 @@ module.exports = function(RED) {
         msg.twcparams.locationtype = locationtype;
       }
 
+      var TWCendpoint ;
+      if( msg.twcparams.locationtype == 'geocode' ) {
+        const latlong = msg.twcparams.location.split(',')
+        var latitude  = parseFloat(latlong[0]);
+        var longitude = parseFloat(latlong[1]);
+        if( isNaN(latitude) || isNaN(longitude) ) {
+          node.warn("Not a valid geocode");
+          return;
+        }
+        TWCendpoint = 'https://api.weather.com/v1/geocode/'+latitude+'/'+longitude+'/forecast/nowcast.json?language='+msg.twcparams.lang+'&units='+msg.twcparams.units+'&apiKey='+apiKey
+      } else if( msg.twcparams.locationtype == 'postalKey' ) {
+        // The Postal Code has a TWC proprietary location type (4) with the following format:
+        // location/<postal code>:<location type>:<country code>
+        const postal = msg.twcparams.location.split(':')
+        if( typeof postal[1] == 'undefined' ) {
+          node.warn("Missing Country. Not a valid postalKey");
+          return;
+        }
+        TWCendpoint = 'https://api.weather.com/v1/location/'+postal[0]+':4:'+postal[1]+'/forecast/nowcast.json?language='+msg.twcparams.lang+'&units='+msg.twcparams.units+'&apiKey='+apiKey
+      }
+
       (async () => {
         try {
-          const response = await axios.get('https://api.weather.com/v3/wx/forecast/daily/'+msg.twcparams.range+'?'+ msg.twcparams.locationtype + '='+ msg.twcparams.location +'&format=json&language='+msg.twcparams.lang+'&units='+msg.twcparams.units+'&apiKey='+apiKey);
+          const response = await axios.get( TWCendpoint );
           //console.log(response.data)
           msg.payload = response.data;
           node.send(msg);
@@ -69,5 +83,5 @@ module.exports = function(RED) {
       })();
     });
   }
-  RED.nodes.registerType("twc-daily-forecast",weatherTWCDailyForecastNode);
+  RED.nodes.registerType("twc-nowcast",weather6HrNowCastNode);
 }

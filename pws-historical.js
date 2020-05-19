@@ -9,7 +9,7 @@ module.exports = function(RED) {
     var date = n.date;
     var pwsConfigNode;
     var apiKey;
-    var request = require('request-promise');
+    const axios = require('axios');
 
     // Retrieve the config node
     pwsConfigNode = RED.nodes.getNode(n.apikey);
@@ -33,7 +33,7 @@ module.exports = function(RED) {
     function dateparser( msg ) {
       // Date validation and reformatting
       var teststr;
-      if( msg.twcparams.date ) {
+      if( typeof msg.twcparams.date !== 'undefined' ) {
         // The pws date to query was passed in as a msg key value pair
         // override any value specified in the edit panel
         var time = new Date(msg.twcparams.date);
@@ -62,12 +62,11 @@ module.exports = function(RED) {
     }
 
     node.on('input', function (msg) {
+      msg.twcparams = msg.twcparams || {};
       var datestr = dateparser( msg );
       if( !datestr ) {
         return;
       }
-
-      msg.twcparams = msg.twcparams || {};
       msg.twcparams.date = datestr ;
 
       if( typeof msg.twcparams.range == 'undefined' ) {
@@ -93,14 +92,19 @@ module.exports = function(RED) {
         node.send(msg);
       } else {
         msg.twcparams.StationID = curStationId;
-        request('https://api.weather.com/v2/pws/history/'+ msg.twcparams.range + '?stationId='+ curStationId +'&format=json&date='+datestr+'&units='+msg.twcparams.units+'&apiKey='+apiKey)
-          .then(function (response) {
-              msg.payload = JSON.parse(response);
-              node.send(msg);
-          })
-          .catch(function (error) {
-              node.send(msg);
-          });
+        (async () => {
+          try {
+            const response = await axios.get('https://api.weather.com/v2/pws/history/'+ msg.twcparams.range + '?stationId='+ curStationId +'&format=json&date='+datestr+'&units='+msg.twcparams.units+'&apiKey='+apiKey);
+            //console.log(response.data)
+            msg.payload = response.data;
+            node.send(msg);
+          } catch (error) {
+            console.log(error.response.data);
+            //console.log(error.response.status);
+            node.warn(error.response.data);
+            node.send(msg);
+          }
+        })();
       }
     });
   }

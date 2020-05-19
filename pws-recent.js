@@ -7,7 +7,7 @@ module.exports = function(RED) {
     var name = n.name;
     var pwsConfigNode;
     var apiKey;
-    var request = require('request-promise');
+    const axios = require('axios');
 
     // Retrieve the config node
     pwsConfigNode = RED.nodes.getNode(n.apikey);
@@ -40,14 +40,19 @@ module.exports = function(RED) {
       } else {
         msg.twcparams.StationID = curStationId;
 
-        request('https://api.weather.com/v2/pws/dailysummary/7day?stationId=' + msg.twcparams.StationID +'&format=json&units='+msg.twcparams.units+'&apiKey='+apiKey)
-          .then(function (response) {
-              msg.payload = JSON.parse(response);
-              node.send(msg);
-          })
-          .catch(function (error) {
-              node.send(msg);
-          });
+        (async () => {
+          try {
+            const response = await axios.get('https://api.weather.com/v2/pws/dailysummary/7day?stationId=' + msg.twcparams.StationID +'&format=json&units='+msg.twcparams.units+'&apiKey='+apiKey);
+            //console.log(response.data)
+            msg.payload = response.data;
+            node.send(msg);
+          } catch (error) {
+            console.log(error.response.data);
+            //console.log(error.response.status);
+            node.warn(error.response.data);
+            node.send(msg);
+          }
+        })();
       }
     });
   }
@@ -62,7 +67,7 @@ module.exports = function(RED) {
     var name = n.name;
     var pwsConfigNode;
     var apiKey;
-    var request = require('request-promise');
+    const axios = require('axios');
 
     // Retrieve the config node
     pwsConfigNode = RED.nodes.getNode(n.apikey);
@@ -95,14 +100,20 @@ module.exports = function(RED) {
       } else {
         msg.twcparams.StationID = curStationId;
 
-        request('https://api.weather.com/v2/pws/observations/hourly/7day?stationId=' + msg.twcparams.StationID +'&format=json&units='+msg.twcparams.units+'&apiKey='+apiKey)
-          .then(function (response) {
-              msg.payload = JSON.parse(response);
-              node.send(msg);
-          })
-          .catch(function (error) {
-              node.send(msg);
-          });
+        (async () => {
+          try {
+            const response = await axios.get('https://api.weather.com/v2/pws/observations/hourly/7day?stationId=' + msg.twcparams.StationID +'&format=json&units='+msg.twcparams.units+'&apiKey='+apiKey);
+            //console.log(response.data)
+            msg.payload = response.data;
+            node.send(msg);
+          } catch (error) {
+            console.log(error.response.data);
+            //console.log(error.response.status);
+            node.warn(error.response.data);
+            node.send(msg);
+          }
+        })();
+
       }
     });
   }
@@ -117,7 +128,7 @@ module.exports = function(RED) {
     var name = n.name;
     var pwsConfigNode;
     var apiKey;
-    var request = require('request-promise');
+    const axios = require('axios');
 
     // Retrieve the config node
     pwsConfigNode = RED.nodes.getNode(n.apikey);
@@ -150,14 +161,19 @@ module.exports = function(RED) {
       } else {
         msg.twcparams.StationID = curStationId;
 
-        request('https://api.weather.com/v2/pws/observations/all/1day?stationId=' + msg.twcparams.StationID +'&format=json&units='+msg.twcparams.units+'&apiKey='+apiKey)
-          .then(function (response) {
-              msg.payload = JSON.parse(response);
-              node.send(msg);
-          })
-          .catch(function (error) {
-              node.send(msg);
-          });
+        (async () => {
+          try {
+            const response = await axios.get('https://api.weather.com/v2/pws/observations/all/1day?stationId=' + msg.twcparams.StationID +'&format=json&units='+msg.twcparams.units+'&apiKey='+apiKey);
+            //console.log(response.data)
+            msg.payload = response.data;
+            node.send(msg);
+          } catch (error) {
+            console.log(error.response.data);
+            //console.log(error.response.status);
+            node.warn(error.response.data);
+            node.send(msg);
+          }
+        })();
       }
     });
   }

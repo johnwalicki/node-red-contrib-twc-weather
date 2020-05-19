@@ -10,7 +10,7 @@ module.exports = function(RED) {
     var range = n.range;
     var pwsConfigNode;
     var apiKey;
-    var request = require('request-promise');
+    const axios = require('axios');
 
     // Retrieve the config node
     pwsConfigNode = RED.nodes.getNode(n.apikey);
@@ -43,14 +43,19 @@ module.exports = function(RED) {
         msg.twcparams.locationtype = locationtype;
       }
 
-      request('https://api.weather.com/v3/wx/forecast/daily/'+msg.twcparams.range+'/cognitiveHealth?'+ msg.twcparams.locationtype + '='+ msg.twcparams.location +'&conditionType='+msg.twcparams.conditiontype+'&format=json&language='+msg.twcparams.lang+'&apiKey='+apiKey)
-        .then(function (response) {
-          msg.payload = JSON.parse(response);
+      (async () => {
+        try {
+          const response = await axios.get('https://api.weather.com/v3/wx/forecast/daily/'+msg.twcparams.range+'/cognitiveHealth?'+ msg.twcparams.locationtype + '='+ msg.twcparams.location +'&conditionType='+msg.twcparams.conditiontype+'&format=json&language='+msg.twcparams.lang+'&apiKey='+apiKey);
+          //console.log(response.data)
+          msg.payload = response.data;
           node.send(msg);
-        })
-        .catch(function (error) {
+        } catch (error) {
+          console.log(error.response.data);
+          //console.log(error.response.status);
+          node.warn(error.response.data);
           node.send(msg);
-        });
+        }
+      })();
     });
   }
   RED.nodes.registerType("twc-health-forecast",weatherTWCHealthForecastNode);

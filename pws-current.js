@@ -18,7 +18,7 @@ module.exports = function(RED) {
     var name = n.name;
     var pwsConfigNode;
     var apiKey;
-    var request = require('request-promise');
+    const axios = require('axios');
 
     // Retrieve the config node
     pwsConfigNode = RED.nodes.getNode(n.apikey);
@@ -50,16 +50,21 @@ module.exports = function(RED) {
         node.send(msg);
       } else {
         msg.twcparams.StationID = curStationId;
-        request('https://api.weather.com/v2/pws/observations/current?stationId=' + curStationId +'&format=json&units='+msg.twcparams.units+'&apiKey='+apiKey)
-          .then(function (response) {
-            msg.payload = JSON.parse(response);
+        (async () => {
+          try {
+            const response = await axios.get('https://api.weather.com/v2/pws/observations/current?stationId=' + curStationId +'&format=json&units='+msg.twcparams.units+'&apiKey='+apiKey);
+            //console.log(response.data)
+            msg.payload = response.data;
             node.send(msg);
-          })
-          .catch(function (error) {
+          } catch (error) {
+            console.log(error.response.data);
+            //console.log(error.response.status);
+            node.warn(error.response.data);
             node.send(msg);
-          });
-        }
-      });
-    }
+          }
+        })();
+      }
+    });
+  }
   RED.nodes.registerType("pws-observations",weatherPWSCurrentObsNode);
 }

@@ -1,4 +1,9 @@
 #### Change Log for node-red-contrib-twc-weather
+- v0.4.0
+  - Refactor nodes to use axios for network requests
+  - twcparams bug fix in pws historical node
+  - Add TWC 6 Hour Nowcast API from the TWC Enhanced Forecast package
+  - Nowcast Example flow
 - v0.3.1
   - fix StationID bug in 7 Day recent history nodes
   - Better Weather Dashboard example

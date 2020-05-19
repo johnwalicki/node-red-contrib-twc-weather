@@ -33,6 +33,7 @@ This Node-RED package creates six PWS nodes in your Node-RED palette.
 This Node-RED package creates TWC nodes in your Node-RED palette.
 - **TWC Daily Forecast** - (3, 5, 7, 10, 15 Day) Daily Forecast API from the TWC Core Weather Data Package.
 - **TWC Health Forecast** - The Cognitive Health Forecast API provides forecast data for the risk of allergy, migraine, cold and flu, or pain for a given location and for a period of one to 15 days in advance.
+- **TWC Nowcast** - The short range Nowcast Forecast API provides a text summary of the weather forecast for the next 6 hour period for today.
 
 Review the [CHANGELOG](https://github.com/johnwalicki/node-red-contrib-twc-weather/blob/master/CHANGELOG.md) for enhancement history.
 

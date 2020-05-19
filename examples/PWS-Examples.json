@@ -46,9 +46,9 @@
         "type": "pws-observations",
         "z": "60afae7.f61045",
         "name": "",
-        "stationid": "KNJRIDGE24",
-        "units": "e",
-        "apikey": "ba693fed.4c01f8",
+        "stationid": "KNJRIDGE9",
+        "units": "m",
+        "apikey": "",
         "x": 570,
         "y": 100,
         "wires": [
@@ -62,9 +62,9 @@
         "type": "pws-observations",
         "z": "60afae7.f61045",
         "name": "",
-        "stationid": "",
+        "stationid": "KNJRIDGE9",
         "units": "m",
-        "apikey": "ba693fed.4c01f8",
+        "apikey": "",
         "x": 570,
         "y": 140,
         "wires": [
@@ -93,11 +93,11 @@
         "type": "pws-historical",
         "z": "60afae7.f61045",
         "name": "",
-        "stationid": "KNJRIDGE24",
+        "stationid": "KNJRIDGE9",
         "units": "e",
         "date": "",
         "range": "daily",
-        "apikey": "ba693fed.4c01f8",
+        "apikey": "",
         "x": 560,
         "y": 360,
         "wires": [
@@ -146,11 +146,11 @@
         "type": "pws-historical",
         "z": "60afae7.f61045",
         "name": "",
-        "stationid": "KNJRIDGE24",
+        "stationid": "KNJRIDGE9",
         "units": "e",
         "date": "20191101",
         "range": "hourly",
-        "apikey": "ba693fed.4c01f8",
+        "apikey": "",
         "x": 560,
         "y": 400,
         "wires": [
@@ -198,11 +198,11 @@
         "type": "pws-historical",
         "z": "60afae7.f61045",
         "name": "",
-        "stationid": "KNJRIDGE24",
+        "stationid": "KNJRIDGE9",
         "units": "e",
         "date": "20191101",
         "range": "all",
-        "apikey": "ba693fed.4c01f8",
+        "apikey": "",
         "x": 560,
         "y": 440,
         "wires": [
@@ -294,7 +294,7 @@
         "locationtype": "postalKey",
         "location": "07450:US",
         "lang": "en-US",
-        "apikey": "ba693fed.4c01f8",
+        "apikey": "",
         "x": 560,
         "y": 560,
         "wires": [
@@ -357,7 +357,7 @@
         "locationtype": "geocode",
         "location": "40.98,-74.1",
         "lang": "en-US",
-        "apikey": "ba693fed.4c01f8",
+        "apikey": "",
         "x": 560,
         "y": 600,
         "wires": [
@@ -409,7 +409,7 @@
         "locationtype": "iataCode",
         "location": "EWR",
         "lang": "en-US",
-        "apikey": "ba693fed.4c01f8",
+        "apikey": "",
         "x": 560,
         "y": 640,
         "wires": [
@@ -461,7 +461,7 @@
         "locationtype": "icaoCode",
         "location": "KEWR",
         "lang": "en-US",
-        "apikey": "ba693fed.4c01f8",
+        "apikey": "",
         "x": 560,
         "y": 680,
         "wires": [
@@ -513,7 +513,7 @@
         "locationtype": "placeid",
         "location": "327145917e06d09373dd2760425a88622a62d248fd97550eb4883737d8d1173b",
         "lang": "en-US",
-        "apikey": "ba693fed.4c01f8",
+        "apikey": "",
         "x": 560,
         "y": 720,
         "wires": [
@@ -592,9 +592,9 @@
         "type": "pws-7day-summary",
         "z": "60afae7.f61045",
         "name": "",
-        "stationid": "KNJRIDGE24",
+        "stationid": "KNJRIDGE9",
         "units": "e",
-        "apikey": "ba693fed.4c01f8",
+        "apikey": "",
         "x": 580,
         "y": 880,
         "wires": [
@@ -622,9 +622,9 @@
         "type": "pws-7day-hourly",
         "z": "60afae7.f61045",
         "name": "",
-        "stationid": "KNJRIDGE24",
+        "stationid": "KNJRIDGE9",
         "units": "e",
-        "apikey": "ba693fed.4c01f8",
+        "apikey": "",
         "x": 570,
         "y": 920,
         "wires": [
@@ -672,9 +672,9 @@
         "type": "pws-1day-all",
         "z": "60afae7.f61045",
         "name": "",
-        "stationid": "KNJRIDGE24",
+        "stationid": "KNJRIDGE9",
         "units": "e",
-        "apikey": "ba693fed.4c01f8",
+        "apikey": "",
         "x": 560,
         "y": 960,
         "wires": [
@@ -734,7 +734,7 @@
                 "t": "set",
                 "p": "twcparams.StationID",
                 "pt": "msg",
-                "to": "KNJRIDGE22",
+                "to": "KNJRIDGE9",
                 "tot": "str"
             },
             {
@@ -850,7 +850,7 @@
                 "t": "set",
                 "p": "twcparams",
                 "pt": "msg",
-                "to": "{\"StationID\":\"KNJRIDGE24\",\"units\":\"E\"}",
+                "to": "{\"StationID\":\"KNJRIDGE9\",\"units\":\"E\"}",
                 "tot": "json"
             },
             {
@@ -864,7 +864,7 @@
                 "t": "set",
                 "p": "twcparams.StationID",
                 "pt": "msg",
-                "to": "KNJRIDGE24",
+                "to": "KNJRIDGE9",
                 "tot": "str"
             },
             {
@@ -921,7 +921,7 @@
                 "t": "set",
                 "p": "twcparams",
                 "pt": "msg",
-                "to": "{\"StationID\":\"KNJRIDGE24\",\"units\":\"E\"}",
+                "to": "{\"StationID\":\"KNJRIDGE9\",\"units\":\"E\"}",
                 "tot": "json"
             },
             {
@@ -935,7 +935,7 @@
                 "t": "set",
                 "p": "twcparams.StationID",
                 "pt": "msg",
-                "to": "KNJRIDGE24",
+                "to": "KNJRIDGE9",
                 "tot": "str"
             },
             {
@@ -987,9 +987,303 @@
         ]
     },
     {
-        "id": "ba693fed.4c01f8",
-        "type": "pwsapikey",
-        "z": "",
-        "name": ""
+        "id": "fbc7d77a.a48c08",
+        "type": "comment",
+        "z": "60afae7.f61045",
+        "name": "TWC NowCast",
+        "info": "",
+        "x": 140,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "c3ffdbe8.30d178",
+        "type": "twc-nowcast",
+        "z": "60afae7.f61045",
+        "name": "",
+        "units": "e",
+        "locationtype": "geocode",
+        "location": "40.98,-74.1",
+        "lang": "en-US",
+        "apikey": "",
+        "x": 560,
+        "y": 1060,
+        "wires": [
+            [
+                "1aa3f73b.6758f9"
+            ]
+        ]
+    },
+    {
+        "id": "26b6548d.4f6d14",
+        "type": "twc-nowcast",
+        "z": "60afae7.f61045",
+        "name": "",
+        "units": "e",
+        "locationtype": "geocode",
+        "location": "1",
+        "lang": "en-US",
+        "apikey": "",
+        "x": 560,
+        "y": 1100,
+        "wires": [
+            [
+                "5be0ee64.95622"
+            ]
+        ]
+    },
+    {
+        "id": "5eb4505a.0a19e",
+        "type": "change",
+        "z": "60afae7.f61045",
+        "name": "set msg.twcparams input vars",
+        "rules": [
+            {
+                "t": "set",
+                "p": "twcparams.units",
+                "pt": "msg",
+                "to": "e",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "twcparams.location",
+                "pt": "msg",
+                "to": "40.98,-74.1",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "twcparams.locationtype",
+                "pt": "msg",
+                "to": "geocode",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 310,
+        "y": 1100,
+        "wires": [
+            [
+                "26b6548d.4f6d14"
+            ]
+        ]
+    },
+    {
+        "id": "f4b9b75a.3dc67",
+        "type": "inject",
+        "z": "60afae7.f61045",
+        "name": "Test",
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 90,
+        "y": 1100,
+        "wires": [
+            [
+                "5eb4505a.0a19e"
+            ]
+        ]
+    },
+    {
+        "id": "80bbfc91.cee928",
+        "type": "twc-nowcast",
+        "z": "60afae7.f61045",
+        "name": "",
+        "units": "m",
+        "locationtype": "postalKey",
+        "location": "07450:US",
+        "lang": "en-US",
+        "apikey": "",
+        "x": 560,
+        "y": 1140,
+        "wires": [
+            [
+                "1fa6af15.e23cd9"
+            ]
+        ]
+    },
+    {
+        "id": "df751055.93314",
+        "type": "twc-nowcast",
+        "z": "60afae7.f61045",
+        "name": "",
+        "units": "e",
+        "locationtype": "postalKey",
+        "location": "0",
+        "lang": "en-US",
+        "apikey": "",
+        "x": 560,
+        "y": 1180,
+        "wires": [
+            [
+                "9310c61d.1946b8"
+            ]
+        ]
+    },
+    {
+        "id": "192a73d3.39059c",
+        "type": "inject",
+        "z": "60afae7.f61045",
+        "name": "6 Hour Nowcast by GeoCode",
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 260,
+        "y": 1060,
+        "wires": [
+            [
+                "c3ffdbe8.30d178"
+            ]
+        ]
+    },
+    {
+        "id": "994c4860.ad4b18",
+        "type": "inject",
+        "z": "60afae7.f61045",
+        "name": "6 Hour Nowcast by Postal Code",
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 250,
+        "y": 1140,
+        "wires": [
+            [
+                "80bbfc91.cee928"
+            ]
+        ]
+    },
+    {
+        "id": "5ffb2617.162658",
+        "type": "change",
+        "z": "60afae7.f61045",
+        "name": "set msg.twcparams input vars",
+        "rules": [
+            {
+                "t": "set",
+                "p": "twcparams.units",
+                "pt": "msg",
+                "to": "e",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "twcparams.location",
+                "pt": "msg",
+                "to": "07450:US",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "twcparams.locationtype",
+                "pt": "msg",
+                "to": "postalKey",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 310,
+        "y": 1180,
+        "wires": [
+            [
+                "df751055.93314"
+            ]
+        ]
+    },
+    {
+        "id": "236c9d05.c5aa22",
+        "type": "inject",
+        "z": "60afae7.f61045",
+        "name": "Test",
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 90,
+        "y": 1180,
+        "wires": [
+            [
+                "5ffb2617.162658"
+            ]
+        ]
+    },
+    {
+        "id": "1aa3f73b.6758f9",
+        "type": "debug",
+        "z": "60afae7.f61045",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 810,
+        "y": 1060,
+        "wires": []
+    },
+    {
+        "id": "5be0ee64.95622",
+        "type": "debug",
+        "z": "60afae7.f61045",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 810,
+        "y": 1100,
+        "wires": []
+    },
+    {
+        "id": "1fa6af15.e23cd9",
+        "type": "debug",
+        "z": "60afae7.f61045",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 810,
+        "y": 1140,
+        "wires": []
+    },
+    {
+        "id": "9310c61d.1946b8",
+        "type": "debug",
+        "z": "60afae7.f61045",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 810,
+        "y": 1180,
+        "wires": []
     }
 ]
