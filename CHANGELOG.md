@@ -1,4 +1,7 @@
 #### Change Log for node-red-contrib-twc-weather
+
+- v0.4.1
+  - Bump axios version (CVE-2020-28168)
 - v0.4.0
   - Refactor nodes to use axios for network requests
   - twcparams bug fix in pws historical node
