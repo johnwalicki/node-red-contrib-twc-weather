@@ -5,7 +5,9 @@ These nodes replace the depreciated **node-red-node-weather-underground** with n
 
 The set of nodes in this package implement the [APIs for Personal Weather Station Contributors](https://docs.google.com/document/d/1eKCnKXI9xnoMGRRzOL1xPCBihNV2rOet08qpE_gArAY).
 
-The Weather Company provides [TWC Weather Data Packages](https://business.weather.com/products/weather-data-packages) that are available for purchase. Node-RED nodes in this package implement select API services.
+The Weather Company provides [TWC Weather Data Packages](https://www.ibm.com/products/weather-company-data-packages) that are available for purchase. Node-RED nodes in this package implement select API services.
+
+If you are building [Call for Code Global Challenge](https://developer.ibm.com/callforcode) solutions that fight [climate change](https://developer.ibm.com/callforcode/get-started/climate-change/), you can register and receive a time-limited free trial [TWC API key](https://developer.ibm.com/callforcode/tools/weather/) to assist in your projects.  This TWC API key can be used for many of the Node-RED nodes in this node-red-contrib-twc-weather package. 
 
 ## Install
 
