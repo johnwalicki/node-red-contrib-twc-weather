@@ -50,6 +50,7 @@
       name: { value:""},
       stationid: { value:""},
       units: { value:"e"},
+      precision: { value:"i"},
       apikey: {value:"", type:"pwsapikey",required: true}
     },
     label: function() {
@@ -77,6 +78,13 @@
     </select>
   </div>
   <div class="form-row">
+    <label for="node-input-precision"><i class="fa fa-thermometer-half"></i> Numeric Precision</label>
+    <select id="node-input-precision">
+      <option value="i">Integer</option>
+      <option value="d">Decimal</option>
+    </select>
+  </div>
+  <div class="form-row">
     <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
     <input type="text" id="node-input-name">
   </div>
@@ -96,6 +104,8 @@ for more information about the <strong>The Weather Company APIs for Personal Wea
     <dd>If specified, override edit panel. Station ID as registered by wunderground.com</dd>
     <dt class="optional">msg.twcparams.units <span class="property-type">string</span></dt>
     <dd>If specified, override edit panel. 'e' - English units, 'm' - Metric units, 'h' - Hybrid units</dd>
+    <dt class="optional">msg.twcparams.precision <span class="property-type">string</span></dt>
+    <dd>If specified, override edit panel. 'i' - Integer values, 'd' - Decimal values</dd>
   </dl>
   <h3>Outputs:</h3>
   <dl class="message-properties">
