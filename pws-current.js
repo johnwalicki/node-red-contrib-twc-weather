@@ -46,6 +46,9 @@ module.exports = function(RED) {
 
       if( typeof msg.twcparams.precision == 'undefined' ) {
         msg.twcparams.precision = precision;
+      } else if( "idID".indexOf(msg.twcparams.precision) >= 0 ) {
+        // passed in param is valid, override default or node setting
+        msg.twcparams.precision = msg.twcparams.precision.toLowerCase();
       } else {
         msg.twcparams.precision = precision;
       }
