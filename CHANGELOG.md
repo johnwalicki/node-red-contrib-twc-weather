@@ -1,5 +1,8 @@
 #### Change Log for node-red-contrib-twc-weather
 
+- v0.5.0
+  - numericPrecision option added to pws-current observations node (jimison)
+  - Bump axios version
 - v0.4.1
   - Bump axios version (CVE-2020-28168)
 - v0.4.0
