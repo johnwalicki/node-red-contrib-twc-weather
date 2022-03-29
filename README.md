@@ -51,13 +51,18 @@ Two examples are provided in the [examples](https://github.com/johnwalicki/node-
 
 ![PWS Dashboard](PWS-Dashboard.png)
 
-### Author
+### Contact
+
+For reporting bugs, requesting features, and discussing changes, developers should use GitHub issues. Give me [feedback](https://github.com/johnwalicki/node-red-contrib-twc-weather/issues) if you have suggestions on how to improve these nodes.
+
+#### Author
 
 - [John Walicki](https://github.com/johnwalicki/)
 
-___
+## Contributing and Developer information
 
-Enjoy!  Give me [feedback](https://github.com/johnwalicki/node-red-contrib-twc-weather/issues) if you have suggestions on how to improve these nodes.
+The Node-RED community welcomes your involvement and contributions to this project. Pull requests are welcome.
+___
 
 ## License
 
