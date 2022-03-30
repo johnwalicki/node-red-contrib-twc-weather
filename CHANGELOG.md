@@ -1,5 +1,8 @@
 #### Change Log for node-red-contrib-twc-weather
 
+- v0.5.1
+  - Set up a npm publish pipeline
+  - Add a SECURITY.md as suggested by OpenSSF Best Practices checklist
 - v0.5.0
   - numericPrecision option added to pws-current observations node (jimison)
   - Bump axios version
