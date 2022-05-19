@@ -1,5 +1,8 @@
 #### Change Log for node-red-contrib-twc-weather
 
+- v0.6.0
+  - Add additional axios error handling ([#6](https://github.com/johnwalicki/node-red-contrib-twc-weather/issues/6))
+  - Bump axios version
 - v0.5.1
   - Set up a npm publish pipeline
   - Add a SECURITY.md as suggested by OpenSSF Best Practices checklist
