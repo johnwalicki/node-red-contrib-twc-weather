@@ -1,11 +1,15 @@
 #### Change Log for node-red-contrib-twc-weather
 
+- v0.6.1
+  - Improve Scorecard results
+      - Declare minimum version of node.js and Node-RED
 - v0.6.0
   - Add additional axios error handling ([#6](https://github.com/johnwalicki/node-red-contrib-twc-weather/issues/6))
   - Bump axios version
-- v0.5.1
+- v0.5.2
   - Set up a npm publish pipeline
   - Add a SECURITY.md as suggested by OpenSSF Best Practices checklist
+  - Add npm-shrinkwrap.json for pipeline
 - v0.5.0
   - numericPrecision option added to pws-current observations node (jimison)
   - Bump axios version
