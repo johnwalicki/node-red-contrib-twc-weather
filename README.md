@@ -1,4 +1,5 @@
 # node-red-contrib-twc-weather
+
 Node-RED nodes for The Weather Company and Weather Underground Personal Weather Station APIs
 
 These nodes replace the depreciated **node-red-node-weather-underground** with new TWC apis for querying [wunderground.com](https://wunderground.com) Personal Weather Station (PWS) data.
@@ -7,13 +8,14 @@ The set of nodes in this package implement the [APIs for Personal Weather Statio
 
 The Weather Company provides [TWC Weather Data Packages](https://www.ibm.com/products/weather-company-data-packages) that are available for purchase. Node-RED nodes in this package implement select API services.
 
-If you are building [Call for Code Global Challenge](https://developer.ibm.com/callforcode) solutions that fight [climate change](https://developer.ibm.com/callforcode/get-started/climate-change/), you can register and receive a time-limited free trial [TWC API key](https://developer.ibm.com/callforcode/tools/weather/) to assist in your projects.  This TWC API key can be used for many of the Node-RED nodes in this node-red-contrib-twc-weather package. 
+If you are building [Call for Code Global Challenge](https://developer.ibm.com/callforcode) solutions that fight [climate change](https://developer.ibm.com/callforcode/get-started/climate-change/), you can register and receive a time-limited free trial [TWC API key](https://developer.ibm.com/callforcode/tools/weather/) to assist in your projects.  This TWC API key can be used for many of the Node-RED nodes in this node-red-contrib-twc-weather package.
 
 ## Install
 
 Either use the Editor - Menu - Manage Palette - Install option, or run the following command in your Node-RED user directory (typically `~/.node-red`).
-```
-$ npm install node-red-contrib-twc-weather
+
+```bash
+npm install node-red-contrib-twc-weather
 ```
 
 ## Usage
@@ -25,6 +27,7 @@ Register your Personal Weather Station at [wunderground](https://www.wundergroun
 ## node-red-contrib-twc-weather Nodes
 
 This Node-RED package creates six PWS nodes in your Node-RED palette.
+
 - **pws observations** - Personal Weather Station (PWS) Current Conditions returns the current conditions observations.
 - **pws historical** - Personal Weather Station (PWS) Historical Data returns the historical PWS data for a single date ( hourly data, summary data for the entire day, or all records )
 - **pws forecast** - The Daily Forecast API is sourced from the The Weather Company Forecast system. This TWC API returns the 5 Day Daily weather forecast.
@@ -33,6 +36,7 @@ This Node-RED package creates six PWS nodes in your Node-RED palette.
 - **pws 1 day all** - Personal Weather Station (PWS) Rapid Historical Observations returns all of the observations records for a specific date.
 
 This Node-RED package creates TWC nodes in your Node-RED palette.
+
 - **TWC Daily Forecast** - (3, 5, 7, 10, 15 Day) Daily Forecast API from the TWC Core Weather Data Package.
 - **TWC Health Forecast** - The Cognitive Health Forecast API provides forecast data for the risk of allergy, migraine, cold and flu, or pain for a given location and for a period of one to 15 days in advance.
 - **TWC Nowcast** - The short range Nowcast Forecast API provides a text summary of the weather forecast for the next 6 hour period for today.
