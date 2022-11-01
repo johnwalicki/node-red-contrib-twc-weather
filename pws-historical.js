@@ -4,6 +4,7 @@ module.exports = function(RED) {
     var node = this;
     var StationId = n.stationid;
     var units = n.units;
+    var precision = n.precision;
     var name = n.name;
     var range = n.range;
     var date = n.date;
@@ -17,6 +18,9 @@ module.exports = function(RED) {
 
     if (!units) {
       units = 'm';
+    }
+    if (!precision) {
+      precision = 'i';
     }
 
     function datevalidation( v ) {
@@ -82,6 +86,21 @@ module.exports = function(RED) {
         msg.twcparams.units = units; // take the default or the node setting
       }
 
+      if( typeof msg.twcparams.precision == 'undefined' ) {
+        msg.twcparams.precision = precision;
+      } else if( "idID".indexOf(msg.twcparams.precision) >= 0 ) {
+        // passed in param is valid, override default or node setting
+        msg.twcparams.precision = msg.twcparams.precision.toLowerCase();
+      } else {
+        msg.twcparams.precision = precision;
+      }
+
+      if ( msg.twcparams.precision == 'd') {
+        var numericPrecision = '&numericPrecision=decimal';
+      } else {
+        var numericPrecision = '';
+      }
+
       var curStationId = StationId;
       if( typeof msg.twcparams.StationID != 'undefined' ) {
         curStationId = msg.twcparams.StationID.toUpperCase();
@@ -94,7 +113,7 @@ module.exports = function(RED) {
         msg.twcparams.StationID = curStationId;
         (async () => {
           try {
-            const response = await axios.get('https://api.weather.com/v2/pws/history/'+ msg.twcparams.range + '?stationId='+ curStationId +'&format=json&date='+datestr+'&units='+msg.twcparams.units+'&apiKey='+apiKey);
+            const response = await axios.get('https://api.weather.com/v2/pws/history/'+ msg.twcparams.range + '?stationId='+ curStationId +'&format=json&date='+datestr+'&units='+msg.twcparams.units+'&apiKey='+apiKey+numericPrecision);
             //console.log(response.data)
             msg.payload = response.data;
             node.send(msg);

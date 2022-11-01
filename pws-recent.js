@@ -4,6 +4,7 @@ module.exports = function(RED) {
     var node = this;
     var StationId = n.stationid;
     var units = n.units;
+    var precision = n.precision;
     var name = n.name;
     var pwsConfigNode;
     var apiKey;
@@ -16,6 +17,9 @@ module.exports = function(RED) {
     if (!units) {
       units = 'm';
     }
+    if (!precision) {
+      precision = 'i';
+    }
 
     node.on('input', function (msg) {
       msg.twcparams = msg.twcparams || {};
@@ -27,6 +31,21 @@ module.exports = function(RED) {
         msg.twcparams.units = msg.twcparams.units.toLowerCase();
       } else {
         msg.twcparams.units = units; // take the default or the node setting
+      }
+
+      if( typeof msg.twcparams.precision == 'undefined' ) {
+        msg.twcparams.precision = precision;
+      } else if( "idID".indexOf(msg.twcparams.precision) >= 0 ) {
+        // passed in param is valid, override default or node setting
+        msg.twcparams.precision = msg.twcparams.precision.toLowerCase();
+      } else {
+        msg.twcparams.precision = precision;
+      }
+
+      if ( msg.twcparams.precision == 'd') {
+        var numericPrecision = '&numericPrecision=decimal';
+      } else {
+        var numericPrecision = '';
       }
 
       var curStationId = StationId;
@@ -42,7 +61,7 @@ module.exports = function(RED) {
 
         (async () => {
           try {
-            const response = await axios.get('https://api.weather.com/v2/pws/dailysummary/7day?stationId=' + msg.twcparams.StationID +'&format=json&units='+msg.twcparams.units+'&apiKey='+apiKey);
+            const response = await axios.get('https://api.weather.com/v2/pws/dailysummary/7day?stationId=' + msg.twcparams.StationID +'&format=json&units='+msg.twcparams.units+'&apiKey='+apiKey+numericPrecision);
             //console.log(response.data)
             msg.payload = response.data;
             node.send(msg);
@@ -81,6 +100,7 @@ module.exports = function(RED) {
     var node = this;
     var StationId = n.stationid;
     var units = n.units;
+    var precision = n.precision;
     var name = n.name;
     var pwsConfigNode;
     var apiKey;
@@ -93,6 +113,9 @@ module.exports = function(RED) {
     if (!units) {
       units = 'm';
     }
+    if (!precision) {
+      precision = 'i';
+    }
 
     node.on('input', function (msg) {
       msg.twcparams = msg.twcparams || {};
@@ -104,6 +127,21 @@ module.exports = function(RED) {
         msg.twcparams.units = msg.twcparams.units.toLowerCase();
       } else {
         msg.twcparams.units = units; // take the default or the node setting
+      }
+
+      if( typeof msg.twcparams.precision == 'undefined' ) {
+        msg.twcparams.precision = precision;
+      } else if( "idID".indexOf(msg.twcparams.precision) >= 0 ) {
+        // passed in param is valid, override default or node setting
+        msg.twcparams.precision = msg.twcparams.precision.toLowerCase();
+      } else {
+        msg.twcparams.precision = precision;
+      }
+
+      if ( msg.twcparams.precision == 'd') {
+        var numericPrecision = '&numericPrecision=decimal';
+      } else {
+        var numericPrecision = '';
       }
 
       var curStationId = StationId;
@@ -119,7 +157,7 @@ module.exports = function(RED) {
 
         (async () => {
           try {
-            const response = await axios.get('https://api.weather.com/v2/pws/observations/hourly/7day?stationId=' + msg.twcparams.StationID +'&format=json&units='+msg.twcparams.units+'&apiKey='+apiKey);
+            const response = await axios.get('https://api.weather.com/v2/pws/observations/hourly/7day?stationId=' + msg.twcparams.StationID +'&format=json&units='+msg.twcparams.units+'&apiKey='+apiKey+numericPrecision);
             //console.log(response.data)
             msg.payload = response.data;
             node.send(msg);
@@ -159,6 +197,7 @@ module.exports = function(RED) {
     var node = this;
     var StationId = n.stationid;
     var units = n.units;
+    var precision = n.precision;
     var name = n.name;
     var pwsConfigNode;
     var apiKey;
@@ -171,6 +210,9 @@ module.exports = function(RED) {
     if (!units) {
       units = 'm';
     }
+    if (!precision) {
+      precision = 'i';
+    }
 
     node.on('input', function (msg) {
       msg.twcparams = msg.twcparams || {};
@@ -182,6 +224,21 @@ module.exports = function(RED) {
         msg.twcparams.units = msg.twcparams.units.toLowerCase();
       } else {
         msg.twcparams.units = units; // take the default or the node setting
+      }
+
+      if( typeof msg.twcparams.precision == 'undefined' ) {
+        msg.twcparams.precision = precision;
+      } else if( "idID".indexOf(msg.twcparams.precision) >= 0 ) {
+        // passed in param is valid, override default or node setting
+        msg.twcparams.precision = msg.twcparams.precision.toLowerCase();
+      } else {
+        msg.twcparams.precision = precision;
+      }
+
+      if ( msg.twcparams.precision == 'd') {
+        var numericPrecision = '&numericPrecision=decimal';
+      } else {
+        var numericPrecision = '';
       }
 
       var curStationId = StationId;
@@ -197,7 +254,7 @@ module.exports = function(RED) {
 
         (async () => {
           try {
-            const response = await axios.get('https://api.weather.com/v2/pws/observations/all/1day?stationId=' + msg.twcparams.StationID +'&format=json&units='+msg.twcparams.units+'&apiKey='+apiKey);
+            const response = await axios.get('https://api.weather.com/v2/pws/observations/all/1day?stationId=' + msg.twcparams.StationID +'&format=json&units='+msg.twcparams.units+'&apiKey='+apiKey+numericPrecision);
             //console.log(response.data)
             msg.payload = response.data;
             node.send(msg);
